@@ -116,10 +116,13 @@ function submitRegister(){
 		};
 
 
-
 		users.push(user)
+
 		// Show a confirmation message to the user
 		alert('Registration successful!');
+
+		returnToWelcome();
+
 	});
 }
 
@@ -133,4 +136,15 @@ function LoginSucced(){
 		gameScreen.style.display = "none";
 	  }
 	loginScreen.style.display = "none";
+}
+
+function returnToWelcome(){
+	let registerScreen = document.getElementById("Register");
+	let welcomeScreen = document.getElementById("Welcome");
+	if (welcomeScreen.style.display === "none") {
+		welcomeScreen.style.display = "block";
+	  } else {
+		welcomeScreen.style.display = "none";
+	  }
+	registerScreen.style.display = "none";
 }

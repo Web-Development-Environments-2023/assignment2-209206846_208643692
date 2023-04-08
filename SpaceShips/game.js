@@ -4,6 +4,8 @@ var bgImage;
 var mainPlayerSpeed = 16;
 var numberOfEnemies = 20;
 // var moveEnemiesRight_or_Left = true // true = move right
+var gameTimer; 
+var timeLeft; // seconds
 
 // Game Code #####################################################################################################################################################################
 const bulletController = new BulletControllerGoodPlayer(canvas);
@@ -95,7 +97,6 @@ function newGame()
 	reset();
 	then = Date.now();
 	intervalTimer = setInterval(main, 1); // Execute as fast as possible
-
 }
 
 function reset() {
@@ -108,3 +109,34 @@ function main() {
 	animate()
 };
 
+function start() {
+	// setInterval is a built-in function that will call the given function
+	// every N milliseconds (1 second = 1000 ms)
+	timeLeft = 30;
+	let playAgainButton = document.getElementById("playAgainButton")
+	gameTimer = setInterval(updateTimer, 1000);
+	
+	// We don't want the to be able to restart the timer while it is running,
+	// so hide the button.
+	playAgainButton.style.visibility = "hidden";
+}
+
+function updateTimer() {
+	let gt = document.getElementById("gameTimer")
+	timeLeft = timeLeft - 1;
+	if(timeLeft >= 0)
+	  gt.textContent = timeLeft;
+	else {
+	  gameOver();
+	}
+  }
+
+// What to do when the timer runs out
+function gameOver() {
+	// This cancels the setInterval, so the updateTimer stops getting called
+	clearInterval(gameTimer);
+	let playAgainButton = document.getElementById("playAgainButton")
+	
+	// re-show the button, so they can start it again
+	playAgainButton.style.visibility = "visible";
+  }
