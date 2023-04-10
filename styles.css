@@ -1,0 +1,181 @@
+/* Style the menu bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png'), #0e1621;
+    padding: 10px;
+  }
+  
+  /* Style the menu items */
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+    font-size: 20px;
+  }
+  
+  /* Style the links inside the menu items */
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Change the color of the active menu item */
+  nav a.active {
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  /* Style the canvas elements */
+  canvas {
+    border: 2px solid #fff;
+    border-radius: 5px;
+  }
+  
+  /* Style the footer */
+  footer {
+    position: relative;
+    margin-top: 50px;
+    background-color: #0e1621;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+  }
+  
+
+  nav img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  nav .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px #6e6e6e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  body {
+    background-color: black;
+    background-image: radial-gradient(white 3%, transparent 0);
+    background-size: 3px 3px;
+  }
+
+  #login-button, #register-button, #playAgainButton {
+    background-color: transparent;
+    color: white;
+    font-size: 1.5em;
+    padding: 20px 50px;
+    border: 3px solid white;
+    border-radius: 50px;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 0px 0px 20px white;
+    cursor: pointer;
+  }
+
+  #login-button:hover, #register-button:hover, #playAgainButton:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 20px black;
+  }
+  
+
+  h1 {
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  form {
+    margin: 50px auto;
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+}
+
+form h2 {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=date] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type=submit] {
+    background-color: transparent;
+    color: black;
+    font-size: 1.5em;
+    padding: 20px 50px;
+    border: 3px solid white;
+    border-radius: 50px;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 0px 0px 20px white;
+    cursor: pointer;
+}
+
+button[type=submit]:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 20px black;
+}
+
+#Game{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  color: white;
+  
+}
+
+
+  #Game
+  #startButton {
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+#gameTimer {
+  color: white;
+}

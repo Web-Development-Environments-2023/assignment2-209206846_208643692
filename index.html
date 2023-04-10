@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooters</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    
+    <script src="js/classes/EnemyElienShip.js"></script>
+    <script src="js/classes/EnemyShipsConroller.js"></script>
+    <script src="js/classes/Bullet.js"></script>
+    <script src="js/classes/BulletControllerGoodPlayer.js"></script>
+    <script src="js/LoginAndRegister/Login_Register.js"></script>
+    <script src="js/classes/PlayerSpaceShip.js"></script>
+    <script src="game.js"></script>
+</head>
+<body>
+    <!-- <center><h1>Space Ship</h1></center>
+    <center><canvas id = "theCanvas" width = "600" height = "600"></canvas></center>
+    <center><input id = "startButton" type = "button" value = "Start Game"></center> -->
+      <nav>
+        <div>
+          <!-- <img src="logo.png" alt="Logo"> -->
+          <span class="title">My Space Game</span>
+        </div>
+        <div>
+          <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <div id="Welcome" style="display: block;">
+        <h1>Welcome to My Page</h1>
+        <button id="login-button" onclick="loginBtnHandler()">Login</button>
+        <button id="register-button" onclick="registerBtnHandler()">Register</button>
+      </div>
+      
+      <!-- login screen -->
+      <div id="Login" style="display: none;">
+        <form id="login-form" >
+            <h2>Login</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+    
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+    
+            <button type="submit" onclick="submitLogin()">Login</button>
+        </form>
+      </div>
+
+      <!-- Register Screen -->
+      <div id="Register" style="display: none;">
+        <form id="register-form">
+            <h2>Register</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" name="surname" required>
+        
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="birthday">Birthday</label>
+            <input type="date" id="birthday" name="birthday" required>
+        
+            <button type="submit" onclick="submitRegister()">Register</button>
+        </form>
+      </div>
+      
+      <!-- Game Canvas -->
+      <div id="Game" style="display: none;">
+        <p><span id="gameTimer">30</span> Seconds Remaining!</p>
+        <p><span id="lives">3</span> Lives Remaining!</p>
+        <p>Score: <span id="score">0</span></p>
+        <button id="playAgainButton" onclick="start()">Go!</button>
+        <canvas id="canvas" width="800" height="800"></canvas>
+      </div>
+      <!-- <input id = "startButton" type = "button" value = "Start Game"> -->
+      
+      <footer>
+        <p>Contact us at <a href="tel:555-555-5555">555-555-5555</a></p>
+        <p>© 2023 My App. All rights reserved.</p>
+      </footer>
+
+</body>
+</html>
