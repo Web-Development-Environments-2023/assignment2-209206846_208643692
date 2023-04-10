@@ -7,7 +7,12 @@ var users =[
 		surname: '',
 		email: '',
 		birthday: '',
-		points: 0
+		points: 0,
+		up:"",
+		down:"",
+        left:"",
+		right:"",
+        shot:"",
 	},
 ]
 
@@ -63,6 +68,7 @@ function submitLogin(){
 					return;
 				}
 				alert("user: " + username + " has logged in!")
+				currentUser = userData
 				LoginSucced() // change to game mode! becuase the user logged in succesfuly
 			}
 		})
@@ -85,6 +91,11 @@ function submitRegister(){
 
 		// Get the form data as an object
 		const formData = new FormData(registerForm);
+
+		let password = formData.get('confirm-password');
+		if (!CheckPassword(password)){
+			return;
+		}
 		
 		if(formData.get('confirm-password') !== formData.get('password')){
 			alert("the password wasn't the same")
@@ -126,14 +137,40 @@ function submitRegister(){
 	});
 }
 
+function CheckPassword(inputtxt) 
+{ 
+	if (inputtxt.length < 8 ){
+		alert('the password is too short at list 8 size!')
+		return false
+	}
+
+    var minMaxLength = /^[\s\S]{8,32}$/,
+        upper = /[A-Z]/,
+        lower = /[a-z]/,
+        number = /[0-9]/
+        // special = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+    if (minMaxLength.test(inputtxt) &&
+        upper.test(inputtxt) &&
+        lower.test(inputtxt) &&
+        number.test(inputtxt)
+    ) {
+        return true;
+    }
+	else
+	{ 
+	alert('need to include at list 1 number,1 a-z, 1 A-Z !')
+	return false;
+	}
+}
+
 
 function LoginSucced(){
 	let loginScreen = document.getElementById("Login");
-	let gameScreen = document.getElementById("Game");
-	if (gameScreen.style.display === "none") {
-		gameScreen.style.display = "block";
+	let gameSettingsScreen = document.getElementById("GameSettings");
+	if (gameSettingsScreen.style.display === "none") {
+		gameSettingsScreen.style.display = "block";
 	  } else {
-		gameScreen.style.display = "none";
+		gameSettingsScreen.style.display = "none";
 	  }
 	loginScreen.style.display = "none";
 }
