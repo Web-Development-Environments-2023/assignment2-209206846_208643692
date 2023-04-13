@@ -1,6 +1,6 @@
 class PlayerSpaceShip{
 
-	constructor(bulletController){
+	constructor(bulletController, badBulletController){
         this.image = new Image();
         this.image.src = "./images/mainPlayer.png"
         this.image.width = 100
@@ -12,6 +12,7 @@ class PlayerSpaceShip{
         // this.imageShot.height = 100
 
         this.bulletController = bulletController
+        this.badBulletController = badBulletController
 
 		this.position = {
 			x: 350,
@@ -24,12 +25,15 @@ class PlayerSpaceShip{
 			bottom: this.position.y + this.height
 		}
 
+        this.lives = 3;
+
 	}
 
 	draw(){
 		// c.fillStyle = 'red'
 		// c.fillRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.image.width,this.image.height)
+        this.checkHits()
 
 	}
 
@@ -49,8 +53,20 @@ class PlayerSpaceShip{
         const damage = 1;
         const bulletX = this.position.x + this.width/2;
         const bulletY = this.position.y ;
+        // const w = 5;
+        // const h = 15;
+        const color = "red"
 
-        this.bulletController.shoot(bulletX, bulletY, speed, damage, delay);
+        this.bulletController.shoot(bulletX, bulletY, speed, damage, color, delay);
+    }
+
+    checkHits(){
+        // add sound
+        if (this.badBulletController.collideWith(this)){
+            console.log("enemy hit")
+            alert("GAME OVER")
+            // add sound
+        }
     }
     
 

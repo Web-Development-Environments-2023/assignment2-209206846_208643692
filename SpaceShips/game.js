@@ -8,10 +8,11 @@ var gameTimer;
 var timeLeft; // seconds
 
 // Game Code #####################################################################################################################################################################
-const bulletController = new BulletControllerGoodPlayer(canvas);
-const playerSpaceShip = new PlayerSpaceShip(bulletController);
+const goodBulletController = new BulletControllerGoodPlayer(canvas);
+const badBulletController = new BulletControllerEnemies(canvas);
+const playerSpaceShip = new PlayerSpaceShip(goodBulletController, badBulletController);
 
-const enemyShipsConroller = new EnemyShipsConroller(20, bulletController);
+const enemyShipsConroller = new EnemyShipsConroller(20, goodBulletController, badBulletController);
 
 
 // window.addEventListener("load", setupGame, false);
@@ -26,6 +27,8 @@ function setupGame()
    // get the canvas, its context and setup its click event handler
    canvas = document.getElementById( "canvas" );
    c = canvas.getContext("2d");
+//    c.canvas.width = window.innerWidth;
+//    c.canvas.width = window.innerWidth;
 
    
 
@@ -85,8 +88,10 @@ function updatePositions(){
 function animate(){
 	c.drawImage(bgImage,0,0,bgImage.width,bgImage.height)
 	playerSpaceShip.draw();
-	playerSpaceShip.update();
-	bulletController.draw()
+	// playerSpaceShip.update();
+	goodBulletController.draw()
+	// enemyShipsConroller.shoot();
+	badBulletController.draw()
 	enemyShipsConroller.draw()
 	// enemyShipsConroller.makeEnemiesMoveLeftRightAndCheckHits()
 }
@@ -114,6 +119,8 @@ function start() {
 	// every N milliseconds (1 second = 1000 ms)
 	timeLeft = 30;
 	let playAgainButton = document.getElementById("playAgainButton")
+	let canvasDiv = document.getElementById("canvas")
+	canvasDiv.style.display = "block"
 	gameTimer = setInterval(updateTimer, 1000);
 	
 	// We don't want the to be able to restart the timer while it is running,
@@ -124,8 +131,10 @@ function start() {
 function updateTimer() {
 	let gt = document.getElementById("gameTimer")
 	timeLeft = timeLeft - 1;
-	if(timeLeft >= 0)
-	  gt.textContent = timeLeft;
+	if(timeLeft >= 0){
+		gt.textContent = timeLeft;
+		enemyShipsConroller.shoot();
+	}
 	else {
 	  gameOver();
 	}

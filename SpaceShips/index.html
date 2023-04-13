@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Shooters</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    
+
+    <script src="js/gameSettingsDialog/gameSettingDialog.js"></script>
     <script src="js/modalDialog/ModalDialog.js"></script>
+    <script src="js/homeFunctionality/homeFunctionality.js"></script>
     <script src="js/settings/Settings.js"></script>
     <script src="js/classes/EnemyElienShip.js"></script>
     <script src="js/classes/EnemyShipsConroller.js"></script>
     <script src="js/classes/Bullet.js"></script>
     <script src="js/classes/BulletControllerGoodPlayer.js"></script>
+    <script src="js/classes/BulletControllerEnemies.js"></script>
     <script src="js/LoginAndRegister/Login_Register.js"></script>
     <script src="js/classes/PlayerSpaceShip.js"></script>
     <script src="game.js"></script>
@@ -22,16 +25,17 @@
     <center><canvas id = "theCanvas" width = "600" height = "600"></canvas></center>
     <center><input id = "startButton" type = "button" value = "Start Game"></center> -->
       <nav>
-        <div>
+        <div id="title">
           <!-- <img src="logo.png" alt="Logo"> -->
-          <span class="title">My Space Game</span>
+          <span class="title">Space Shooters</span>
+          <img src="images/vector-illustration-rocket-flying-sky-spaceship.jpg">
         </div>
-        <div>
+        <div id="menu">
           <ul>
-            <li><a href="#" class="active">Home</a></li>
+            <li><a id="return-home-btn" href="#" class="active">Home</a></li>
             <li><a id="open-dialog-btn" href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Game Settings</a></li>
+            <li><a id="contact-us-btn" href="#">Contact</a></li>
+            <li><a id="show-settings-btn" href="#">Game Settings</a></li>
           </ul>
         </div>
       </nav>
@@ -57,10 +61,19 @@
           <p>הקשיים שנתקלתם בהם בתרגיל:</p>
         </div>
       </div>
+
+      <!-- Setting explanation -->
+      <div id="settingsExplained" class="settingsExplained">
+        <div class="settings-content">
+          <span class="close-settings">&times;</span>
+          <h2>Settings</h2>
+          <p>Each user can choose their own settings during login!</p>
+        </div>
+      </div>
       
       <!-- Welcome screen -->
       <div id="Welcome" style="display: none;">
-        <h1>Welcome to My Page</h1>
+        <h1>Welcome to Our Space Shooting Game</h1>
         <button id="login-button" onclick="loginBtnHandler()">Login</button>
         <button id="register-button" onclick="registerBtnHandler()">Register</button>
       </div>
@@ -80,7 +93,7 @@
       </div>
 
       <!-- Register Screen -->
-      <div id="Register" style="display: block;">
+      <div id="Register" style="display: none;">
         <form id="register-form">
             <h2>Register</h2>
             <label for="username">Username</label>
@@ -136,12 +149,14 @@
       </div>
       
       <!-- Game Canvas -->
-      <div id="Game" style="display: none;">
-        <p><span id="gameTimer">30</span> Seconds Remaining!</p>
-        <p><span id="lives">3</span> Lives Remaining!</p>
-        <p>Score: <span id="score">0</span></p>
-        <button id="playAgainButton" onclick="start()">Go!</button>
-        <canvas id="canvas" width="800" height="800"></canvas>
+      <div id="Game" style="display: block;">
+        <div style="display: block;">
+          <p><span id="gameTimer">30</span> Seconds Remaining!</p>
+          <p><span id="lives">3</span> Lives Remaining!</p>
+          <p>Score: <span id="score">0</span></p>
+          <button id="playAgainButton" onclick="start()">Start Game!</button>
+        </div>
+        <canvas id="canvas" width="800" height="800" style="display: none;"></canvas>
       </div>
       <!-- <input id = "startButton" type = "button" value = "Start Game"> -->
       

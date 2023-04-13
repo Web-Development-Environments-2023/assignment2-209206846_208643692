@@ -1,10 +1,11 @@
 class EnemyShipsConroller{
 
-    constructor(numberOfEnemiesShips, bulletController){
+    constructor(numberOfEnemiesShips, bulletController, enemiesBulletController){
         // this.canvas = canvas
         this.enemyElienShips = [];
         this.moveEnemiesRight_or_Left = true;
         this.bulletControllerOfMainPlayer = bulletController
+        this.enemiesBulletController = enemiesBulletController
 
         for(let i=0; i<numberOfEnemies ; i++){
             this.enemyElienShips.push(new EnemyElienShip())}
@@ -41,6 +42,7 @@ class EnemyShipsConroller{
             if (this.bulletControllerOfMainPlayer.collideWith(this.enemyElienShips[i])){
                 this.enemyElienShips.splice(i,1)
                 console.log("hit")
+                // add sound
             }
             else{
     
@@ -62,6 +64,22 @@ class EnemyShipsConroller{
         }
     
         }
+    }
+
+    shoot(){
+        // choose a random ship
+        let ships_num = this.enemyElienShips.length;
+        let shootingShip = this.enemyElienShips[Math.floor(Math.random() * ships_num)];
+
+        const speed = 2;
+        const damage = 1;
+        const bulletX = shootingShip.position.x;
+        const bulletY = shootingShip.position.y;
+        // const w = 5;
+        // const h = 15;
+        const color = "green"
+
+        this.enemiesBulletController.shoot(bulletX, bulletY, speed, damage, color);
     }
 
 }
