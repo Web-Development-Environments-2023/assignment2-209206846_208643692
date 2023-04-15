@@ -5,9 +5,9 @@ class BulletControllerEnemies{
         this.canvas = canvas
     }
 
-    shoot(bulletX, bulletY, speed, damage, color){
+    shoot(bulletX, bulletY, speed, damage, width, height, color){
         if(this.shootNextBullet){
-            this.bullets.push(new Bullet(bulletX, bulletY, speed, damage, color));
+            this.bullets.push(new Bullet(bulletX, bulletY, speed, damage, width, height, color));
         }
 
     }

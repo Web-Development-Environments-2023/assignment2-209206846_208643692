@@ -6,6 +6,7 @@ var numberOfEnemies = 20;
 // var moveEnemiesRight_or_Left = true // true = move right
 var gameTimer; 
 var timeLeft; // seconds
+var timesFaster = 0;
 
 // Game Code #####################################################################################################################################################################
 const goodBulletController = new BulletControllerGoodPlayer(canvas);
@@ -93,6 +94,7 @@ function animate(){
 	// enemyShipsConroller.shoot();
 	badBulletController.draw()
 	enemyShipsConroller.draw()
+	updateScore()
 	// enemyShipsConroller.makeEnemiesMoveLeftRightAndCheckHits()
 }
 
@@ -122,6 +124,7 @@ function start() {
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "block"
 	gameTimer = setInterval(updateTimer, 1000);
+	speedUpTimer = setInterval(makeGameFaster, 5000)
 	
 	// We don't want the to be able to restart the timer while it is running,
 	// so hide the button.
@@ -140,6 +143,14 @@ function updateTimer() {
 	}
   }
 
+  function makeGameFaster() {
+	if(timeLeft >= 0 && timesFaster < 4){
+		enemyShipsConroller.currentBulletSpeed += 0.5
+		enemyShipsConroller.currentXChange += 0.2
+		timesFaster++
+	}
+  }
+
 // What to do when the timer runs out
 function gameOver() {
 	// This cancels the setInterval, so the updateTimer stops getting called
@@ -148,4 +159,9 @@ function gameOver() {
 	
 	// re-show the button, so they can start it again
 	playAgainButton.style.visibility = "visible";
+  }
+
+  function updateScore(){
+	let gameScore = document.getElementById("score")
+	gameScore.textContent = enemyShipsConroller.playerScore
   }

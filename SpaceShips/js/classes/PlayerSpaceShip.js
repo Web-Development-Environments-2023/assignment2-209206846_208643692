@@ -53,11 +53,11 @@ class PlayerSpaceShip{
         const damage = 1;
         const bulletX = this.position.x + this.width/2;
         const bulletY = this.position.y ;
-        // const w = 5;
-        // const h = 15;
+        const w = 10;
+        const h = 15;
         const color = "red"
 
-        this.bulletController.shoot(bulletX, bulletY, speed, damage, color, delay);
+        this.bulletController.shoot(bulletX, bulletY, speed, damage, w, h, color, delay);
     }
 
     checkHits(){

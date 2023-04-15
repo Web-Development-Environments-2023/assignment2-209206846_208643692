@@ -1,13 +1,12 @@
 class Bullet{
-    constructor(x,y,speed,damage,color){
+    constructor(x,y,speed,damage,width, height, color){
         this.x = x;
         this.y = y;
         this.speed=speed;
         this.damage = damage;
-        this.width = 10;
-        this.height = 20;
+        this.width = width;
+        this.height = height;
         this.color = color;
-
     }
 
     // for player bullets

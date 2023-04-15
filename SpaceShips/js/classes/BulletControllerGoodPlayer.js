@@ -12,9 +12,9 @@ class BulletControllerGoodPlayer{
         this.canvas = canvas
     }
 
-    shoot(bulletX, bulletY, speed, damage, color, delay){
+    shoot(bulletX, bulletY, speed, damage, width, height, color, delay){
         if(this.timerTillNextBullet <= 0){
-            this.bullets.push(new Bullet(bulletX, bulletY, speed, damage, color));
+            this.bullets.push(new Bullet(bulletX, bulletY, speed, damage, width, height, color));
             this.timerTillNextBullet = delay // the time between bullets
         }
 

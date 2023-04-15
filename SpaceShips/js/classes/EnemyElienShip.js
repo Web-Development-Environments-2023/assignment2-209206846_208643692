@@ -1,10 +1,11 @@
 class EnemyElienShip{
 
-	constructor(){
+	constructor(points){
         this.image = new Image();
         this.image.src = "./images/ElienShip.png"
         this.image.width = 100
         this.image.height = 100
+		this.points = points
 
 		this.position = {
 			x: 0,

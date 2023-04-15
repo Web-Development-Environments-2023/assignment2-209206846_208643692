@@ -8,9 +8,25 @@ class EnemyShipsConroller{
         this.enemiesBulletController = enemiesBulletController
 
         for(let i=0; i<numberOfEnemies ; i++){
-            this.enemyElienShips.push(new EnemyElienShip())}
+            let score = 0
+            if (i < 5){
+                score = 40
+            }
+            else if (i < 10){
+                score = 30
+            }
+            else if (i < 15){
+                score = 20
+            }
+            else if (i < 20){
+                score = 10
+            }
+            this.enemyElienShips.push(new EnemyElienShip(score))}
         this.numberOfEnemiesShips = numberOfEnemiesShips
         this.positionTheShips()
+        this.currentBulletSpeed = 2.5
+        this.currentXChange = 0.5
+        this.playerScore = 0
     }
 
     draw(){
@@ -40,6 +56,7 @@ class EnemyShipsConroller{
         for(let i=0; i<this.enemyElienShips.length ; i++){
             // console.log("hit1")
             if (this.bulletControllerOfMainPlayer.collideWith(this.enemyElienShips[i])){
+                this.playerScore += this.enemyElienShips[i].points
                 this.enemyElienShips.splice(i,1)
                 console.log("hit")
                 // add sound
@@ -54,10 +71,10 @@ class EnemyShipsConroller{
             }
     
             if (this.moveEnemiesRight_or_Left){
-                this.enemyElienShips[i].position.x += 0.5
+                this.enemyElienShips[i].position.x += this.currentXChange
             }
             else if (!this.moveEnemiesRight_or_Left){
-                this.enemyElienShips[i].position.x -= 0.5
+                this.enemyElienShips[i].position.x -= this.currentXChange
             }
             
             this.enemyElienShips[i].draw();
@@ -71,16 +88,15 @@ class EnemyShipsConroller{
         let ships_num = this.enemyElienShips.length;
         let shootingShip = this.enemyElienShips[Math.floor(Math.random() * ships_num)];
 
-        const speed = 2;
+        const speed = this.currentBulletSpeed;
         const damage = 1;
         const bulletX = shootingShip.position.x;
         const bulletY = shootingShip.position.y;
-        // const w = 5;
-        // const h = 15;
+        const w = 10;
+        const h = 15;
         const color = "green"
 
-        this.enemiesBulletController.shoot(bulletX, bulletY, speed, damage, color);
+        this.enemiesBulletController.shoot(bulletX, bulletY, speed, damage, w, h, color);
     }
-
 }
 
