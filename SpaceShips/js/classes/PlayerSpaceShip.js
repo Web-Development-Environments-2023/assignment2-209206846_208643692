@@ -64,7 +64,7 @@ class PlayerSpaceShip{
         // add sound
         if (this.badBulletController.collideWith(this)){
             console.log("enemy hit")
-            alert("GAME OVER")
+            this.lives--
             // add sound
         }
     }

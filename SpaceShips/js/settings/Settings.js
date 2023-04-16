@@ -59,40 +59,44 @@ function settingsSubmitBtnHandler(){
 		// Get the username and password from the form data
 		const up = formData.get('move-up-key');
 		const down = formData.get('move-down-key');
-        const left = formData.get('move-left-key');
+    const left = formData.get('move-left-key');
 		const right = formData.get('move-right-key');
-        const shot = formData.get('shoot-key');
-        moves = [up,down,left,right,shot]
+    const shot = formData.get('shoot-key');
+    moves = [up,down,left,right,shot]
 
 		
 		for (let i = 0; i < moves.length; i++) {
-            for (let j = 0; j < moves.length; j++) {
-                if (i===j){
-                    continue
-                }
-                else if (moves[i] === moves[j]){
-                    alert("you can't have the same button in two different moves!")
-                    return;
-                }
-            
+        for (let j = 0; j < moves.length; j++) {
+            if (i===j){
+                continue
             }
+            else if (moves[i] === moves[j]){
+                alert("you can't have the same button in two different moves!")
+                return;
+            }
+        
         }
+    }
 
-        //global player moves
-        currentUser.up = up;
-        currentUser.down = down;
-        currentUser.right = right;
-        currentUser.left = left;
-        currentUser.shot = shot;
+    timeLeft = formData.get('game-time')
 
-        let welcomeScreen = document.getElementById("Welcome");
-        let loginScreen = document.getElementById("Login");
-        let RegisterScreen = document.getElementById("Register");
-        let Game = document.getElementById("Game");
-        welcomeScreen.style.display = "none";
-        loginScreen.style.display = "none";
-        RegisterScreen.style.display = "none";
-        Game.style.display = "block";
+    //global player moves
+    currentUser.up = up;
+    currentUser.down = down;
+    currentUser.right = right;
+    currentUser.left = left;
+    currentUser.shot = shot;
+
+    let welcomeScreen = document.getElementById("Welcome");
+    let loginScreen = document.getElementById("Login");
+    let RegisterScreen = document.getElementById("Register");
+    let gameSettingsScreen = document.getElementById("GameSettings")
+    let Game = document.getElementById("Game");
+    welcomeScreen.style.display = "none";
+    loginScreen.style.display = "none";
+    RegisterScreen.style.display = "none";
+    gameSettingsScreen.style.display = "none";
+    Game.style.display = "block";
 
 	});
 }

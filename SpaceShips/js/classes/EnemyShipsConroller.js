@@ -10,16 +10,16 @@ class EnemyShipsConroller{
         for(let i=0; i<numberOfEnemies ; i++){
             let score = 0
             if (i < 5){
-                score = 40
-            }
-            else if (i < 10){
-                score = 30
-            }
-            else if (i < 15){
                 score = 20
             }
-            else if (i < 20){
+            else if (i < 10){
+                score = 15
+            }
+            else if (i < 15){
                 score = 10
+            }
+            else if (i < 20){
+                score = 5
             }
             this.enemyElienShips.push(new EnemyElienShip(score))}
         this.numberOfEnemiesShips = numberOfEnemiesShips

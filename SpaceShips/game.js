@@ -59,23 +59,23 @@ function setupGame()
 function updatePositions(){
 	window.addEventListener('keydown',(e) => {
 		switch (e.key){
-			case 'ArrowUp':
+			case currentUser.up:
 				if(playerSpaceShip.position.y> (canvas.height*0.6)-8){
 					playerSpaceShip.position.y -= mainPlayerSpeed}
 				break
-			case 'ArrowDown':
+			case currentUser.down:
 				if(playerSpaceShip.position.y + playerSpaceShip.height < canvas.height+8){
 					playerSpaceShip.position.y += mainPlayerSpeed}
 				break
-			case 'ArrowRight':
+			case currentUser.right:
 				if(playerSpaceShip.position.x + playerSpaceShip.width < canvas.width+8){
 				playerSpaceShip.position.x += mainPlayerSpeed}
 				break
-			case 'ArrowLeft':
+			case currentUser.left:
 				if(playerSpaceShip.position.x > -8){
 				playerSpaceShip.position.x -= mainPlayerSpeed}
 				break
-			case 'e':
+			case currentUser.shot:
 				playerSpaceShip.shoot()
 				break
 			case 'r':
@@ -84,6 +84,35 @@ function updatePositions(){
 		}
 	})
 }
+
+// function updatePositions(){
+// 	window.addEventListener('keydown',(e) => {
+// 		switch (e.key){
+// 			case 'ArrowUp':
+// 				if(playerSpaceShip.position.y> (canvas.height*0.6)-8){
+// 					playerSpaceShip.position.y -= mainPlayerSpeed}
+// 				break
+// 			case 'ArrowDown':
+// 				if(playerSpaceShip.position.y + playerSpaceShip.height < canvas.height+8){
+// 					playerSpaceShip.position.y += mainPlayerSpeed}
+// 				break
+// 			case 'ArrowRight':
+// 				if(playerSpaceShip.position.x + playerSpaceShip.width < canvas.width+8){
+// 				playerSpaceShip.position.x += mainPlayerSpeed}
+// 				break
+// 			case 'ArrowLeft':
+// 				if(playerSpaceShip.position.x > -8){
+// 				playerSpaceShip.position.x -= mainPlayerSpeed}
+// 				break
+// 			case 'e':
+// 				playerSpaceShip.shoot()
+// 				break
+// 			case 'r':
+				
+// 				break
+// 		}
+// 	})
+// }
 
 
 function animate(){
@@ -95,6 +124,7 @@ function animate(){
 	badBulletController.draw()
 	enemyShipsConroller.draw()
 	updateScore()
+	updateLives()
 	// enemyShipsConroller.makeEnemiesMoveLeftRightAndCheckHits()
 }
 
@@ -119,7 +149,6 @@ function main() {
 function start() {
 	// setInterval is a built-in function that will call the given function
 	// every N milliseconds (1 second = 1000 ms)
-	timeLeft = 30;
 	let playAgainButton = document.getElementById("playAgainButton")
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "block"
@@ -164,4 +193,15 @@ function gameOver() {
   function updateScore(){
 	let gameScore = document.getElementById("score")
 	gameScore.textContent = enemyShipsConroller.playerScore
+  }
+
+  function updateLives(){
+	let livesLeft = document.getElementById("lives")
+	let playerLives = playerSpaceShip.lives
+	if (playerLives > 0){
+		livesLeft.textContent = playerLives
+	}
+	else {
+		gameOver()
+	}
   }
