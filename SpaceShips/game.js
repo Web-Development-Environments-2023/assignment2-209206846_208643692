@@ -6,6 +6,7 @@ var numberOfEnemies = 20;
 // var moveEnemiesRight_or_Left = true // true = move right
 var gameTimer; 
 var timeLeft; // seconds
+var originalTimeLeft; // seconds
 var timesFaster = 0;
 
 // Game Code #####################################################################################################################################################################
@@ -29,7 +30,7 @@ function setupGame()
    canvas = document.getElementById( "canvas" );
    c = canvas.getContext("2d");
 //    c.canvas.width = window.innerWidth;
-//    c.canvas.width = window.innerWidth;
+//    c.canvas.height = window.innerHeight;
 
    
 
@@ -152,6 +153,10 @@ function start() {
 	let playAgainButton = document.getElementById("playAgainButton")
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "block"
+	timeLeft = originalTimeLeft
+	playerSpaceShip.lives = 3
+	enemyShipsConroller.playerScore = 0
+	// restoreEnemies()
 	gameTimer = setInterval(updateTimer, 1000);
 	speedUpTimer = setInterval(makeGameFaster, 5000)
 	
@@ -188,6 +193,8 @@ function gameOver() {
 	
 	// re-show the button, so they can start it again
 	playAgainButton.style.visibility = "visible";
+	let canvasDiv = document.getElementById("canvas")
+	canvasDiv.style.display = "none"
   }
 
   function updateScore(){
@@ -202,6 +209,28 @@ function gameOver() {
 		livesLeft.textContent = playerLives
 	}
 	else {
+		livesLeft.textContent = 0
 		gameOver()
 	}
   }
+
+//   function restoreEnemies(){
+// 	if (enemyShipsConroller.enemyElienShips.length != 20) {
+// 		enemyShipsConroller.enemyElienShips = []
+// 		for(let i=0; i<numberOfEnemies ; i++){
+//             let score = 0
+//             if (i < 5){
+//                 score = 20
+//             }
+//             else if (i < 10){
+//                 score = 15
+//             }
+//             else if (i < 15){
+//                 score = 10
+//             }
+//             else if (i < 20){
+//                 score = 5
+//             }
+//             enemyShipsConroller.enemyElienShips.push(new EnemyElienShip(score))}
+// 	}
+//   }

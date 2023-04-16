@@ -32,9 +32,8 @@ class PlayerSpaceShip{
 	draw(){
 		// c.fillStyle = 'red'
 		// c.fillRect(this.position.x,this.position.y,this.width,this.height)
-        c.drawImage(this.image,this.position.x,this.position.y,this.image.width,this.image.height)
         this.checkHits()
-
+        c.drawImage(this.image,this.position.x,this.position.y,this.image.width,this.image.height)
 	}
 
 	update() {
@@ -65,6 +64,10 @@ class PlayerSpaceShip{
         if (this.badBulletController.collideWith(this)){
             console.log("enemy hit")
             this.lives--
+            this.position = {
+                x: 350,
+                y: 650
+            }
             // add sound
         }
     }

@@ -78,7 +78,7 @@ function settingsSubmitBtnHandler(){
         }
     }
 
-    timeLeft = formData.get('game-time')
+    originalTimeLeft = formData.get('game-time')
 
     //global player moves
     currentUser.up = up;
