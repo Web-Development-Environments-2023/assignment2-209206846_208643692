@@ -6,6 +6,13 @@ const moveLeftInput = document.getElementById('move-left-key');
 const moveRightInput = document.getElementById('move-right-key');
 const shootInput = document.getElementById('shoot-key');
 
+moveUpInput.value = "ArrowUp";
+moveDownInput.value = "ArrowDown";
+moveLeftInput.value = "ArrowLeft";
+moveRightInput.value = "ArrowRight";
+shootInput.value = "Space";
+
+
 // Add event listeners to each input field
 moveUpInput.addEventListener('keydown', function(event) {
   event.preventDefault(); // prevent the default action of the keypress
@@ -86,6 +93,9 @@ function settingsSubmitBtnHandler(){
     currentUser.right = right;
     currentUser.left = left;
     currentUser.shot = shot;
+    if(currentUser.shot == "Space"){
+      currentUser.shot = " "
+    }
 
     let welcomeScreen = document.getElementById("Welcome");
     let loginScreen = document.getElementById("Login");

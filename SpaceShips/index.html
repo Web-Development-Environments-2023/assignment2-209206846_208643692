@@ -7,8 +7,8 @@
     <title>Space Shooters</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
-    <script src="js/gameSettingsDialog/gameSettingDialog.js"></script>
-    <script src="js/modalDialog/ModalDialog.js"></script>
+    
+    
     <script src="js/homeFunctionality/homeFunctionality.js"></script>
     <script src="js/settings/Settings.js"></script>
     <script src="js/classes/EnemyElienShip.js"></script>
@@ -18,6 +18,8 @@
     <script src="js/classes/BulletControllerEnemies.js"></script>
     <script src="js/LoginAndRegister/Login_Register.js"></script>
     <script src="js/classes/PlayerSpaceShip.js"></script>
+    <script src="js/gameSettingsDialog/gameSettingDialog.js"></script>
+    <script src="js/modalDialog/ModalDialog.js"></script>
     <script src="game.js"></script>
 </head>
 <body>
@@ -40,6 +42,10 @@
         </div>
       </nav>
 
+      <!-- The video -->
+      <video autoplay muted loop id="myVideo">
+        <source src="images/backgroundVideo.mp4" type="video/mp4">
+      </video>
 
       <!-- Button to open the dialog
       <button id="open-dialog-btn">Open Dialog</button> -->
@@ -63,9 +69,9 @@
       </div>
 
       <!-- Setting explanation -->
-      <div id="settingsExplained" class="settingsExplained">
-        <div class="settings-content">
-          <span class="close-settings">&times;</span>
+      <div id="settingsExplained" class="settingsExplained dialog">
+        <div class="settings-content dialog-content">
+          <span class="close-settings close">&times;</span>
           <h2>Settings</h2>
           <p>Each user can choose their own settings during login!</p>
         </div>
@@ -79,9 +85,10 @@
       </div>
       
       <!-- login screen -->
+      
       <div id="Login" style="display: none;">
         <form id="login-form" >
-            <h2>Login</h2>
+            <h1>Login</h1>
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
     
@@ -95,7 +102,7 @@
       <!-- Register Screen -->
       <div id="Register" style="display: none;">
         <form id="register-form">
-            <h2>Register</h2>
+            <h1>Register</h1>
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
         
