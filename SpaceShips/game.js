@@ -8,6 +8,9 @@ var gameTimer;
 var timeLeft; // seconds
 var originalTimeLeft; // seconds
 var timesFaster = 0;
+var gameSound;
+var laserSound;
+var strikeSound;
 
 // Game Code #####################################################################################################################################################################
 const goodBulletController = new BulletControllerGoodPlayer(canvas);
@@ -38,12 +41,12 @@ function setupGame()
    bgImage.src = "images/bg.jpg"
 
    window.addEventListener('resize', function(event) {
-		canvas.width = screen.width*0.42
-		canvas.height = screen.height*0.6
+		canvas.width = screen.width
+		canvas.height = screen.height
 		bgImage.width = canvas.width
    		bgImage.height = canvas.height
 		playerSpaceShip.position.x = canvas.width /2 - playerSpaceShip.width/2
-		playerSpaceShip.position.y = canvas.height * 0.9
+		playerSpaceShip.position.y = canvas.height * 0.8
 
 		// drawEnemies()
 	}, true);
@@ -157,6 +160,10 @@ function start() {
 	playerSpaceShip.lives = 3
 	enemyShipsConroller.playerScore = 0
 	// restoreEnemies()
+	gameSound = new sound("sound/onlymp3.to - Space Trance (super)-XfP36F-3pJ0-256k-1657556329695.mp3");
+    laserSound = new sound("sound/Laser Gun Sound Effect.mp3");
+	strikeSound = new sound("sound/SUSPENSE STRIKE SOUND EFFECT.mp3");
+    gameSound.play();
 	gameTimer = setInterval(updateTimer, 1000);
 	speedUpTimer = setInterval(makeGameFaster, 5000)
 	
@@ -190,6 +197,7 @@ function gameOver() {
 	// This cancels the setInterval, so the updateTimer stops getting called
 	clearInterval(gameTimer);
 	let playAgainButton = document.getElementById("playAgainButton")
+	gameSound.stop()
 	
 	// re-show the button, so they can start it again
 	playAgainButton.style.visibility = "visible";
@@ -234,3 +242,18 @@ function gameOver() {
 //             enemyShipsConroller.enemyElienShips.push(new EnemyElienShip(score))}
 // 	}
 //   }
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}

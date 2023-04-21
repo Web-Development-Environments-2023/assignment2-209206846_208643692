@@ -15,7 +15,7 @@ class PlayerSpaceShip{
         this.badBulletController = badBulletController
 
 		this.position = {
-			x: 350,
+			x: Math.random() * (800 - 300) + 300,
 			y: 650
 		}
 
@@ -62,10 +62,11 @@ class PlayerSpaceShip{
     checkHits(){
         // add sound
         if (this.badBulletController.collideWith(this)){
+            strikeSound.play()
             console.log("enemy hit")
             this.lives--
             this.position = {
-                x: 350,
+                x: Math.random() * (800 - 300) + 300,
                 y: 650
             }
             // add sound

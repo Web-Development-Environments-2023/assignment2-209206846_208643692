@@ -56,6 +56,7 @@ class EnemyShipsConroller{
         for(let i=0; i<this.enemyElienShips.length ; i++){
             // console.log("hit1")
             if (this.bulletControllerOfMainPlayer.collideWith(this.enemyElienShips[i])){
+                laserSound.play()
                 this.playerScore += this.enemyElienShips[i].points
                 this.enemyElienShips.splice(i,1)
                 console.log("hit")

@@ -41,7 +41,7 @@ nav {
   }
 
   footer {
-    position:fixed;
+    position:relative;
     bottom: 0;
     width: 100%;
     color: #fff;
@@ -367,3 +367,44 @@ button[type=submit]:hover {
 .dialog-content ul li {
   margin-bottom: 5px;
 }
+
+.game-timer{
+  color: rgb(101, 139, 164);
+  font-family: "georgia";
+  font-size: 28px;
+  font-weight: bold;
+  display: inline;
+  letter-spacing: 5px;
+  /* word-spacing: 10px; */
+  border-width:5px;
+  border-style:groove;
+  border-color:#9b137b;
+}
+
+.live{
+  color: rgb(101, 139, 164);
+  font-family: "georgia";
+  font-size: 28px;
+  font-weight: bold;
+  display: inline;
+  letter-spacing: 5px;
+  /* word-spacing: 10px; */
+  border-width:5px;
+  border-style:groove;
+  border-color:#9b137b;
+}
+
+.scores{
+  color: rgb(101, 139, 164);
+  font-family: "georgia";
+  font-size: 28px;
+  font-weight: bold;
+  display: inline;
+  letter-spacing: 5px;
+  /* word-spacing: 10px; */
+  border-width:5px;
+  border-style:groove;
+  border-color:#9b137b;
+}
+
+audio { display:none;}

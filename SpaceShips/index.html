@@ -158,9 +158,11 @@
       <!-- Game Canvas -->
       <div id="Game" style="display: none;">
         <div style="display: block;">
-          <p><span id="gameTimer">120</span> Seconds Remaining!</p>
-          <p><span id="lives">3</span> Lives Remaining!</p>
-          <p>Score: <span id="score">0</span></p>
+          <p class="game-timer"><span id="gameTimer" style="color: rgb(101, 139, 164);">120</span> Seconds Remaining!</p>
+          <p style="display: inline;">&emsp;&emsp;&emsp;</p>
+          <p class="live"><span id="lives">3</span> Lives Remaining!</p>
+          <p style="display: inline;">&emsp;&emsp;&emsp;</p>
+          <p class="scores">Score: <span id="score">0</span></p>
           <button id="playAgainButton" onclick="start()">Start Game!</button>
         </div>
         <canvas id="canvas" width="1200" height="800" style="display: none;"></canvas>
