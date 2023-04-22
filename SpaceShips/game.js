@@ -20,11 +20,10 @@ var keyboardKeys = {
 }
 
 // Game Code #####################################################################################################################################################################
-const goodBulletController = new BulletControllerGoodPlayer(canvas);
-const badBulletController = new BulletControllerEnemies(canvas);
-const playerSpaceShip = new PlayerSpaceShip(goodBulletController, badBulletController);
-
-const enemyShipsConroller = new EnemyShipsConroller(20, goodBulletController, badBulletController);
+let goodBulletController = new BulletControllerGoodPlayer(canvas);
+let badBulletController = new BulletControllerEnemies(canvas);
+let playerSpaceShip = new PlayerSpaceShip(goodBulletController, badBulletController);
+let enemyShipsConroller = new EnemyShipsConroller(20, goodBulletController, badBulletController);
 
 
 // window.addEventListener("load", setupGame, false);
@@ -44,59 +43,100 @@ function setupGame()
 
    
 
-   bgImage = new Image();
-   bgImage.src = "images/bg.jpg"
 
-   window.addEventListener('resize', function(event) {
-		canvas.width = screen.width
-		canvas.height = screen.height
-		bgImage.width = canvas.width
-   		bgImage.height = canvas.height
-		playerSpaceShip.position.x = canvas.width /2 - playerSpaceShip.width/2
-		playerSpaceShip.position.y = canvas.height * 0.8
-
-		// drawEnemies()
-	}, true);	
+//    screen.addEventListener('resize', drawCanvas, false);	
 	
+
+	drawCanvas()
+
+	// window.addEventListener('keydown',(e1) => {
+	// 	switch (e1.key){
+	// 	case currentUser.up:
+	// 		keyboardKeys.up = true;
+	// 		break
+	// 	case currentUser.down:
+	// 		keyboardKeys.down = true;
+	// 		break
+	// 	case currentUser.right:
+	// 		keyboardKeys.right = true;
+	// 		break
+	// 	case currentUser.left:
+	// 		keyboardKeys.left = true;
+	// 		break
+	// 	case currentUser.shot:
+	// 		keyboardKeys.shoot = true;
+	// 		break}})
+
+
+	// window.addEventListener('keyup',(e2) => {
+	// 	switch (e2.key){
+	// 	case currentUser.up:
+	// 		keyboardKeys.up = false;
+	// 		break
+	// 	case currentUser.down:
+	// 		keyboardKeys.down = false;
+	// 		break
+	// 	case currentUser.right:
+	// 		keyboardKeys.right = false;
+	// 		break
+	// 	case currentUser.left:
+	// 		keyboardKeys.left = false;
+	// 		break
+	// 	case currentUser.shot:
+	// 		keyboardKeys.shoot = false
+	// 		break}})
+
 	window.addEventListener('keydown',(e1) => {
 		switch (e1.key){
-		case currentUser.up:
+		case "ArrowUp":
 			keyboardKeys.up = true;
 			break
-		case currentUser.down:
+		case "ArrowDown":
 			keyboardKeys.down = true;
 			break
-		case currentUser.right:
+		case "ArrowRight":
 			keyboardKeys.right = true;
 			break
-		case currentUser.left:
+		case "ArrowLeft":
 			keyboardKeys.left = true;
 			break
-		case currentUser.shot:
+		case " ":
 			keyboardKeys.shoot = true;
 			break}})
 
 
 	window.addEventListener('keyup',(e2) => {
 		switch (e2.key){
-		case currentUser.up:
+		case "ArrowUp":
 			keyboardKeys.up = false;
 			break
-		case currentUser.down:
+		case "ArrowDown":
 			keyboardKeys.down = false;
 			break
-		case currentUser.right:
+		case "ArrowRight":
 			keyboardKeys.right = false;
 			break
-		case currentUser.left:
+		case "ArrowLeft":
 			keyboardKeys.left = false;
 			break
-		case currentUser.shot:
+		case " ":
 			keyboardKeys.shoot = false
 			break}})
 	
 } // end function setupGame
 
+
+function drawCanvas() {
+	canvas.width  = screen.width*0.98;
+	canvas.height = screen.height*0.8;
+	bgImage = new Image();
+	bgImage.src = "images/bg.jpg"
+	bgImage.width = canvas.width
+	bgImage.height = canvas.height
+	
+	playerSpaceShip.position.x = Math.random() * (canvas.width)
+	playerSpaceShip.position.y = canvas.height * 0.8
+  }
 
 
 function updatePositions(){
@@ -118,7 +158,9 @@ function updatePositions(){
 }
 
 function animate(){
+	c.clearRect(0, 0, canvas.width, canvas.height);
 	c.drawImage(bgImage,0,0,bgImage.width,bgImage.height)
+	
 	playerSpaceShip.draw();
 	// playerSpaceShip.update();
 	goodBulletController.draw()
@@ -137,7 +179,6 @@ function animate(){
 function newGame()
 {
 	reset();
-	then = Date.now();
 	intervalTimer = setInterval(main, 1); // Execute as fast as possible
 }
 
@@ -166,17 +207,20 @@ function start() {
 	// setInterval is a built-in function that will call the given function
 	// every N milliseconds (1 second = 1000 ms)
 	newGame()
+	goodBulletController = new BulletControllerGoodPlayer(canvas);
+	badBulletController = new BulletControllerEnemies(canvas);
+	playerSpaceShip = new PlayerSpaceShip(goodBulletController, badBulletController);
+	enemyShipsConroller = new EnemyShipsConroller(20, goodBulletController, badBulletController);
 	let playAgainButton = document.getElementById("playAgainButton")
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "block"
 	timeLeft = originalTimeLeft
 	playerSpaceShip.lives = 3
 	enemyShipsConroller.playerScore = 0
-	// restoreEnemies()
 	gameSound = new sound("sound/onlymp3.to - Space Trance (super)-XfP36F-3pJ0-256k-1657556329695.mp3");
     laserSound = new sound("sound/Laser Gun Sound Effect.mp3");
 	strikeSound = new sound("sound/SUSPENSE STRIKE SOUND EFFECT.mp3");
-    gameSound.play();
+    // gameSound.play();
 	gameTimer = setInterval(updateTimer, 1000);
 	speedUpTimer = setInterval(makeGameFaster, 5000)
 	
@@ -218,7 +262,7 @@ function gameOver() {
 	playAgainButton.style.visibility = "visible";
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "none"
-	// printResults()
+	printResults()
 	printHighScores()
 	changeFooterPlaceToFixed()
   }
@@ -247,26 +291,6 @@ function gameOver() {
 	}
   }
 
-//   function restoreEnemies(){
-// 	if (enemyShipsConroller.enemyElienShips.length != 20) {
-// 		enemyShipsConroller.enemyElienShips = []
-// 		for(let i=0; i<numberOfEnemies ; i++){
-//             let score = 0
-//             if (i < 5){
-//                 score = 20
-//             }
-//             else if (i < 10){
-//                 score = 15
-//             }
-//             else if (i < 15){
-//                 score = 10
-//             }
-//             else if (i < 20){
-//                 score = 5
-//             }
-//             enemyShipsConroller.enemyElienShips.push(new EnemyElienShip(score))}
-// 	}
-//   }
 
 function sound(src) {
   this.sound = document.createElement("audio");
@@ -284,13 +308,12 @@ function sound(src) {
 }
 
 function printResults(){
-	// todo: change alerts to div
 	let playerLives = playerSpaceShip.lives
 	let enemiesLeft = enemyShipsConroller.enemyElienShips.length
 	let finalScore = enemyShipsConroller.playerScore
 
 	if (playerLives == 0){
-		alert("You Lost!")
+		alert("You Lost! " + finalScore + " Points")
 	}
 
 	else if (timeLeft == 0){
@@ -309,44 +332,48 @@ function printResults(){
 
 function addHighScore(){
 	let finalScore = enemyShipsConroller.playerScore
-	let arr = currentUser.highScores
-	let ind = sortedIndex(arr, finalScore)
-	currentUser.highScores.splice(ind, 0, finalScore)
+	// let arr = currentUser.highScores
+	// let ind = binarySearch(arr, finalScore)
+	currentUser.highScores.push(finalScore)
 }
 
 function printHighScores(){
 	addHighScore()
 	let scoreBoard = document.getElementById("highScores")
 	let list = document.getElementById("scoresList");
-	let data = currentUser.highScores
+	list.innerHTML = ''
+	let data = currentUser.highScores.slice()
+	data.sort().reverse()
 	data.forEach((item)=>{
 		let li = document.createElement("li");
-		li.innerText = item;
+		li.innerText = "Name: " + currentUser.username + " Score: " + item;
 		list.appendChild(li);
 	})
 	console.log("List created")
 	scoreBoard.style.display = "block"
 }
 
-function sortedIndex(array, value) {
-    var low = 0
-	var high = array.length;
+// function binarySearch(arr, val) {
+// 	let start = 0;
+// 	let end = arr.length - 1;
+// 	let mid = 0;
 
-    while (low < high) {
-        var mid = (low + high) >>> 1;
-
-        if (array[mid] == value){
-			return mid
-		}
-
-		if (array[mid] > value){
-			low = mid + 1;
-		}
-        else {
-			high = mid;
-		}
-    }
-    return mid;
-}
+// 	console.log(mid)
+// 	while (start <= end) {
+// 	  mid = Math.floor((start + end) / 2);
+  
+// 	  if (arr[mid] === val) {
+// 		return mid;
+// 	  }
+  
+// 	  if (val < arr[mid]) {
+// 		end = mid - 1;
+// 	  } else {
+// 		start = mid + 1;
+// 	  }
+// 	}
+// 	console.log(mid)
+// 	return mid;
+//   }
 
 

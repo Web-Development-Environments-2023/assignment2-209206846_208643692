@@ -35,11 +35,6 @@ nav {
     border-radius: 5%;
   }
 
-  canvas {
-    border: 2px solid #fff;
-    border-radius: 5px;
-  }
-
   footer {
     position:fixed;
     bottom: 0;
@@ -71,12 +66,26 @@ nav {
   }
 
   body {
+    width:  100%;
+    height: 100%;
+    margin: 0;
     background-color: black;
     background-image: radial-gradient(white 3%, transparent 0);
-    background-size: 3px 3px;
+    /* background-size: 3px 3px; */
   }
 
-  #login-button, #register-button, #playAgainButton {
+  canvas {
+    /* border: 2px solid #fff;
+    border-radius: 5px;
+    width: 50%;
+    height: 50%; */
+    margin-top: 2%;
+    position: relative; 
+    right :0px; 
+    bottom : 0px;
+  }
+
+  #login-button, #register-button {
     background-color: transparent;
     color: white;
     font-size: 1.5em;
@@ -90,6 +99,25 @@ nav {
     letter-spacing: 3px;
     box-shadow: 0px 0px 20px white;
     cursor: pointer;
+  }
+
+  #playAgainButton {
+    background-color: transparent;
+    color: white;
+    font-size: 150%;
+    padding: 20px 50px;
+    position: absolute;
+    border: 3px solid white;
+    border-radius: 50px;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 0px 0px 20px white;
+    cursor: pointer;
+    margin-top: 16%;
+    margin-left: 38%;
   }
 
   #login-button:hover, #register-button:hover, #playAgainButton:hover {
@@ -190,10 +218,6 @@ button[type=submit]:hover {
   background-color: white;
   color: black;
   box-shadow: 0px 0px 20px black;
-}
-
-#gameTimer {
-  color: white;
 }
 
 #settingP {
@@ -311,13 +335,14 @@ button[type=submit]:hover {
 }
 
 
-#myVideo {
+#myImage {
   position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
   z-index: -1;
+  opacity: 0.8;
 }
 
 
@@ -398,43 +423,54 @@ button[type=submit]:hover {
   margin-bottom: 5px;
 }
 
-.game-timer{
-  color: rgb(101, 139, 164);
-  font-family: "georgia";
-  font-size: 28px;
+.game-timer {
+  color: #00ffcc;
+  font-family: "Orbitron", sans-serif;
+  font-size: 150%;
   font-weight: bold;
+  position: absolute;
   display: inline;
   letter-spacing: 5px;
-  /* word-spacing: 10px; */
-  border-width:5px;
-  border-style:groove;
-  border-color:#9b137b;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #00ffcc;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  margin-left: 20px; /* Added margin from top */
 }
 
-.live{
-  color: rgb(101, 139, 164);
-  font-family: "georgia";
-  font-size: 28px;
+.live {
+  color: #ff3366;
+  font-family: "Orbitron", sans-serif;
+  font-size: 150%;
   font-weight: bold;
+  position: absolute;
   display: inline;
   letter-spacing: 5px;
-  /* word-spacing: 10px; */
-  border-width:5px;
-  border-style:groove;
-  border-color:#9b137b;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #ff3366;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  margin-left: 40%; /* Added margin from top */
 }
 
-.scores{
-  color: rgb(101, 139, 164);
-  font-family: "georgia";
-  font-size: 28px;
+.scores {
+  color: #ffcc00;
+  font-family: "Orbitron", sans-serif;
+  font-size: 150%;
   font-weight: bold;
+  position: absolute;
   display: inline;
   letter-spacing: 5px;
-  /* word-spacing: 10px; */
-  border-width:5px;
-  border-style:groove;
-  border-color:#9b137b;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #ffcc00;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  margin-left: 75%; /* Added margin from top */
 }
+
+
 
 audio { display:none;}

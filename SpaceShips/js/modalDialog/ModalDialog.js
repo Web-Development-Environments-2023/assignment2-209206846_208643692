@@ -19,11 +19,11 @@ closeBtn.onclick = function() {
 }
 
 // When the user clicks anywhere outside of the dialog, close it
-window.onclick = function(event) {
+window.addEventListener("click",function(event) {
   if (event.target == dialog) {
     dialog.style.display = "none";
   }
-}
+})
 
 // When the user presses the Escape key, close the dialog
 document.addEventListener('keydown', function(event) {

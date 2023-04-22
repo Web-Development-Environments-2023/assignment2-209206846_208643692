@@ -19,11 +19,11 @@ closeSettingsBtn.onclick = function() {
 }
 
 // When the user clicks anywhere outside of the settings, close it
-window.onclick = function(event) {
+window.addEventListener("click",function(event) {
     if (event.target == settingsExplained) {
         settingsExplained.style.display = "none";
     }
-}
+})
 
 // When the user presses the Escape key, close the settings
 document.addEventListener('keydown', function(event) {

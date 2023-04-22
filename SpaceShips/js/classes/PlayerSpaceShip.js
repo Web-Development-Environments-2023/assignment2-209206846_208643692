@@ -66,8 +66,8 @@ class PlayerSpaceShip{
             console.log("enemy hit")
             this.lives--
             this.position = {
-                x: Math.random() * (800 - 300) + 300,
-                y: 650
+                x: Math.random() * (canvas.width),
+                y: canvas.height * 0.8
             }
             // add sound
         }
