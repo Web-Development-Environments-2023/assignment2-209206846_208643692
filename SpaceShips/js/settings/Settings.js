@@ -43,6 +43,14 @@ shootInput.addEventListener('keydown', function(event) {
 }, false);
 
 
+
+function changeFooterPlaceToFixed(){
+	// change footer position
+	document.getElementById("footer").style.position = "fixed";
+}
+
+
+
 function checkForSpaceElseOriginalKey(e){
     if (e.code === 'Space'){
         return 'Space'
@@ -108,5 +116,6 @@ function settingsSubmitBtnHandler(){
     gameSettingsScreen.style.display = "none";
     Game.style.display = "block";
 
+    changeFooterPlaceToFixed()
 	});
 }

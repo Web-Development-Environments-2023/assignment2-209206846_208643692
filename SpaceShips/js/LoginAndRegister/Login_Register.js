@@ -7,15 +7,25 @@ var users =[
 		surname: '',
 		email: '',
 		birthday: '',
-		points: 0,
-		up:"",
-		down:"",
-        left:"",
-		right:"",
-        shot:"",
+		highScores: [],
+		up:"ArrowUp",
+		down:"ArrowDown",
+        left:"ArrowLeft",
+		right:"ArrowRight",
+        shot:" ",
 	},
 ]
 
+
+function changeFooterPlaceToRelative(){
+	// change footer position
+	document.getElementById("footer").style.position = "relative";
+}
+
+function changeFooterPlaceToFixed(){
+	// change footer position
+	document.getElementById("footer").style.position = "fixed";
+}
 
 // window.addEventListener("load", setupGame, false);
 
@@ -28,7 +38,8 @@ function loginBtnHandler(){
 		welcomeScreen.style.display = "none";
 	  }
 	loginScreen.style.display = "block";
-	
+
+	changeFooterPlaceToRelative()
 }
 
 function registerBtnHandler(){
@@ -40,7 +51,9 @@ function registerBtnHandler(){
 		welcomeScreen.style.display = "none";
 	  }
 	registerScreen.style.display = "block";
+
 	
+	changeFooterPlaceToRelative()
 }
 
 function submitLogin(){
@@ -184,4 +197,6 @@ function returnToWelcome(){
 		welcomeScreen.style.display = "none";
 	  }
 	registerScreen.style.display = "none";
+
+	changeFooterPlaceToFixed()
 }

@@ -16,7 +16,7 @@ class BulletControllerEnemies{
         this.bullets.forEach((bullet)=> {
             if(this.isBulletOffScreen(bullet)){ // we want to remove all the bullets that are of the screen
                 const index = this.bullets.indexOf(bullet)
-                this.bullets.splice(index,1)  
+                this.bullets.splice(index,1)
             }
             bullet.drawEnemy()})
     }
@@ -26,7 +26,7 @@ class BulletControllerEnemies{
         if (this.bullets.length == 0){
             return true;
         }
-        return this.bullets[this.bullets.length-1].height <= c.height * 0.25
+        return this.bullets[0].height <= c.height * 0.25
     }
 
     isBulletOffScreen(bullet){

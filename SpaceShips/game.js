@@ -1,7 +1,7 @@
 var canvas;
 var c;
 var bgImage;
-var mainPlayerSpeed = 16;
+var mainPlayerSpeed = 3;
 var numberOfEnemies = 20;
 // var moveEnemiesRight_or_Left = true // true = move right
 var gameTimer; 
@@ -11,6 +11,13 @@ var timesFaster = 0;
 var gameSound;
 var laserSound;
 var strikeSound;
+var keyboardKeys = {
+	up: false,
+	down: false,
+	right: false,
+	left: false,
+	shoot: false
+}
 
 // Game Code #####################################################################################################################################################################
 const goodBulletController = new BulletControllerGoodPlayer(canvas);
@@ -49,75 +56,66 @@ function setupGame()
 		playerSpaceShip.position.y = canvas.height * 0.8
 
 		// drawEnemies()
-	}, true);
-   
-	newGame()
-	updatePositions()
+	}, true);	
 	
-	
+	window.addEventListener('keydown',(e1) => {
+		switch (e1.key){
+		case currentUser.up:
+			keyboardKeys.up = true;
+			break
+		case currentUser.down:
+			keyboardKeys.down = true;
+			break
+		case currentUser.right:
+			keyboardKeys.right = true;
+			break
+		case currentUser.left:
+			keyboardKeys.left = true;
+			break
+		case currentUser.shot:
+			keyboardKeys.shoot = true;
+			break}})
+
+
+	window.addEventListener('keyup',(e2) => {
+		switch (e2.key){
+		case currentUser.up:
+			keyboardKeys.up = false;
+			break
+		case currentUser.down:
+			keyboardKeys.down = false;
+			break
+		case currentUser.right:
+			keyboardKeys.right = false;
+			break
+		case currentUser.left:
+			keyboardKeys.left = false;
+			break
+		case currentUser.shot:
+			keyboardKeys.shoot = false
+			break}})
 	
 } // end function setupGame
 
 
 
 function updatePositions(){
-	window.addEventListener('keydown',(e) => {
-		switch (e.key){
-			case currentUser.up:
-				if(playerSpaceShip.position.y> (canvas.height*0.6)-8){
-					playerSpaceShip.position.y -= mainPlayerSpeed}
-				break
-			case currentUser.down:
-				if(playerSpaceShip.position.y + playerSpaceShip.height < canvas.height+8){
-					playerSpaceShip.position.y += mainPlayerSpeed}
-				break
-			case currentUser.right:
-				if(playerSpaceShip.position.x + playerSpaceShip.width < canvas.width+8){
-				playerSpaceShip.position.x += mainPlayerSpeed}
-				break
-			case currentUser.left:
-				if(playerSpaceShip.position.x > -8){
-				playerSpaceShip.position.x -= mainPlayerSpeed}
-				break
-			case currentUser.shot:
-				playerSpaceShip.shoot()
-				break
-			case 'r':
-				
-				break
-		}
-	})
+	if (keyboardKeys.up && playerSpaceShip.position.y> (canvas.height*0.6)-8){
+		playerSpaceShip.position.y -= mainPlayerSpeed
+	}
+	if (keyboardKeys.down && playerSpaceShip.position.y + playerSpaceShip.height < canvas.height+8){
+		playerSpaceShip.position.y += mainPlayerSpeed
+	}
+	if (keyboardKeys.right && playerSpaceShip.position.x + playerSpaceShip.width < canvas.width+8){
+		playerSpaceShip.position.x += mainPlayerSpeed
+	}
+	if (keyboardKeys.left && playerSpaceShip.position.x > -8){
+		playerSpaceShip.position.x -= mainPlayerSpeed
+	}
+	if (keyboardKeys.shoot){
+		playerSpaceShip.shoot()
+	}
 }
-
-// function updatePositions(){
-// 	window.addEventListener('keydown',(e) => {
-// 		switch (e.key){
-// 			case 'ArrowUp':
-// 				if(playerSpaceShip.position.y> (canvas.height*0.6)-8){
-// 					playerSpaceShip.position.y -= mainPlayerSpeed}
-// 				break
-// 			case 'ArrowDown':
-// 				if(playerSpaceShip.position.y + playerSpaceShip.height < canvas.height+8){
-// 					playerSpaceShip.position.y += mainPlayerSpeed}
-// 				break
-// 			case 'ArrowRight':
-// 				if(playerSpaceShip.position.x + playerSpaceShip.width < canvas.width+8){
-// 				playerSpaceShip.position.x += mainPlayerSpeed}
-// 				break
-// 			case 'ArrowLeft':
-// 				if(playerSpaceShip.position.x > -8){
-// 				playerSpaceShip.position.x -= mainPlayerSpeed}
-// 				break
-// 			case 'e':
-// 				playerSpaceShip.shoot()
-// 				break
-// 			case 'r':
-				
-// 				break
-// 		}
-// 	})
-// }
-
 
 function animate(){
 	c.drawImage(bgImage,0,0,bgImage.width,bgImage.height)
@@ -129,6 +127,9 @@ function animate(){
 	enemyShipsConroller.draw()
 	updateScore()
 	updateLives()
+	checkEnemies()
+	updatePositions()
+	
 	// enemyShipsConroller.makeEnemiesMoveLeftRightAndCheckHits()
 }
 
@@ -150,9 +151,21 @@ function main() {
 	animate()
 };
 
+
+function changeFooterPlaceToRelative(){
+	// change footer position
+	document.getElementById("footer").style.position = "relative";
+}
+
+function changeFooterPlaceToFixed(){
+	// change footer position
+	document.getElementById("footer").style.position = "fixed";
+}
+
 function start() {
 	// setInterval is a built-in function that will call the given function
 	// every N milliseconds (1 second = 1000 ms)
+	newGame()
 	let playAgainButton = document.getElementById("playAgainButton")
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "block"
@@ -170,6 +183,7 @@ function start() {
 	// We don't want the to be able to restart the timer while it is running,
 	// so hide the button.
 	playAgainButton.style.visibility = "hidden";
+	changeFooterPlaceToRelative()
 }
 
 function updateTimer() {
@@ -196,6 +210,7 @@ function updateTimer() {
 function gameOver() {
 	// This cancels the setInterval, so the updateTimer stops getting called
 	clearInterval(gameTimer);
+	clearInterval(intervalTimer)
 	let playAgainButton = document.getElementById("playAgainButton")
 	gameSound.stop()
 	
@@ -203,6 +218,9 @@ function gameOver() {
 	playAgainButton.style.visibility = "visible";
 	let canvasDiv = document.getElementById("canvas")
 	canvasDiv.style.display = "none"
+	// printResults()
+	printHighScores()
+	changeFooterPlaceToFixed()
   }
 
   function updateScore(){
@@ -218,6 +236,13 @@ function gameOver() {
 	}
 	else {
 		livesLeft.textContent = 0
+		gameOver()
+	}
+  }
+
+  function checkEnemies(){
+	let enemiesLeft = enemyShipsConroller.enemyElienShips.length
+	if (enemiesLeft == 0){
 		gameOver()
 	}
   }
@@ -257,3 +282,71 @@ function sound(src) {
     this.sound.pause();
   }
 }
+
+function printResults(){
+	// todo: change alerts to div
+	let playerLives = playerSpaceShip.lives
+	let enemiesLeft = enemyShipsConroller.enemyElienShips.length
+	let finalScore = enemyShipsConroller.playerScore
+
+	if (playerLives == 0){
+		alert("You Lost!")
+	}
+
+	else if (timeLeft == 0){
+		if(finalScore < 100){
+			alert("you can do better! " + finalScore + " Points")
+		}
+		else{
+			alert("Winner! " + finalScore + " Points")
+		}
+	}
+	
+	else if (enemiesLeft == 0){
+		alert("Champion! " + finalScore + " Points")
+	}
+}
+
+function addHighScore(){
+	let finalScore = enemyShipsConroller.playerScore
+	let arr = currentUser.highScores
+	let ind = sortedIndex(arr, finalScore)
+	currentUser.highScores.splice(ind, 0, finalScore)
+}
+
+function printHighScores(){
+	addHighScore()
+	let scoreBoard = document.getElementById("highScores")
+	let list = document.getElementById("scoresList");
+	let data = currentUser.highScores
+	data.forEach((item)=>{
+		let li = document.createElement("li");
+		li.innerText = item;
+		list.appendChild(li);
+	})
+	console.log("List created")
+	scoreBoard.style.display = "block"
+}
+
+function sortedIndex(array, value) {
+    var low = 0
+	var high = array.length;
+
+    while (low < high) {
+        var mid = (low + high) >>> 1;
+
+        if (array[mid] == value){
+			return mid
+		}
+
+		if (array[mid] > value){
+			low = mid + 1;
+		}
+        else {
+			high = mid;
+		}
+    }
+    return mid;
+}
+
+

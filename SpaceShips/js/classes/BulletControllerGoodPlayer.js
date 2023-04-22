@@ -20,6 +20,7 @@ class BulletControllerGoodPlayer{
 
         this.timerTillNextBullet-- // this is will decrease when it the function called in loops
     }
+
     draw(){
         // console.log(this.bullets.length) number of bullet on the screen
         this.bullets.forEach((bullet)=> {

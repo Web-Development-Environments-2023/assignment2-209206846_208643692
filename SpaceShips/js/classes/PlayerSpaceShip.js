@@ -47,8 +47,8 @@ class PlayerSpaceShip{
 	}
 
     shoot(){
-        const speed = 5;
-        const delay = 5;
+        const speed = 1;
+        const delay = 100;
         const damage = 1;
         const bulletX = this.position.x + this.width/2;
         const bulletY = this.position.y ;
