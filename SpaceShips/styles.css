@@ -38,7 +38,8 @@ nav {
   footer {
     position:fixed;
     bottom: 0;
-    width: 100%;
+    right:  2;
+    width: 96%;
     color: #fff;
     padding: 20px;
     text-align: center;

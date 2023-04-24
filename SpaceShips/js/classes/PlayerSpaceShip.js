@@ -33,7 +33,7 @@ class PlayerSpaceShip{
 		// c.fillStyle = 'red'
 		// c.fillRect(this.position.x,this.position.y,this.width,this.height)
         this.checkHits()
-        c.drawImage(this.image,this.position.x,this.position.y,this.image.width,this.image.height)
+        c.drawImage(this.image,this.position.x,this.position.y,this.image.width*0.8,this.image.height*0.8)
 	}
 
 	update() {

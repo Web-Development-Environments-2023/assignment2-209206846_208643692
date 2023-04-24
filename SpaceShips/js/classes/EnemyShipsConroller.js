@@ -44,7 +44,7 @@ class EnemyShipsConroller{
                 col_x_position = 0 
             }
             this.enemyElienShips[i].position.x = col_x_position*100
-            this.enemyElienShips[i].position.y = row_y_position*100    
+            this.enemyElienShips[i].position.y = row_y_position*70   
             col_x_position++ // so each one of the five ships will be on thse place col x
             
        }

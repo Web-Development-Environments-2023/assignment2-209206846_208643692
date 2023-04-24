@@ -49,86 +49,86 @@ function setupGame()
 
 	drawCanvas()
 
-	// window.addEventListener('keydown',(e1) => {
-	// 	switch (e1.key){
-	// 	case currentUser.up:
-	// 		keyboardKeys.up = true;
-	// 		break
-	// 	case currentUser.down:
-	// 		keyboardKeys.down = true;
-	// 		break
-	// 	case currentUser.right:
-	// 		keyboardKeys.right = true;
-	// 		break
-	// 	case currentUser.left:
-	// 		keyboardKeys.left = true;
-	// 		break
-	// 	case currentUser.shot:
-	// 		keyboardKeys.shoot = true;
-	// 		break}})
-
-
-	// window.addEventListener('keyup',(e2) => {
-	// 	switch (e2.key){
-	// 	case currentUser.up:
-	// 		keyboardKeys.up = false;
-	// 		break
-	// 	case currentUser.down:
-	// 		keyboardKeys.down = false;
-	// 		break
-	// 	case currentUser.right:
-	// 		keyboardKeys.right = false;
-	// 		break
-	// 	case currentUser.left:
-	// 		keyboardKeys.left = false;
-	// 		break
-	// 	case currentUser.shot:
-	// 		keyboardKeys.shoot = false
-	// 		break}})
-
 	window.addEventListener('keydown',(e1) => {
 		switch (e1.key){
-		case "ArrowUp":
+		case currentUser.up:
 			keyboardKeys.up = true;
 			break
-		case "ArrowDown":
+		case currentUser.down:
 			keyboardKeys.down = true;
 			break
-		case "ArrowRight":
+		case currentUser.right:
 			keyboardKeys.right = true;
 			break
-		case "ArrowLeft":
+		case currentUser.left:
 			keyboardKeys.left = true;
 			break
-		case " ":
+		case currentUser.shot:
 			keyboardKeys.shoot = true;
 			break}})
 
 
 	window.addEventListener('keyup',(e2) => {
 		switch (e2.key){
-		case "ArrowUp":
+		case currentUser.up:
 			keyboardKeys.up = false;
 			break
-		case "ArrowDown":
+		case currentUser.down:
 			keyboardKeys.down = false;
 			break
-		case "ArrowRight":
+		case currentUser.right:
 			keyboardKeys.right = false;
 			break
-		case "ArrowLeft":
+		case currentUser.left:
 			keyboardKeys.left = false;
 			break
-		case " ":
+		case currentUser.shot:
 			keyboardKeys.shoot = false
 			break}})
+
+	// window.addEventListener('keydown',(e1) => {
+	// 	switch (e1.key){
+	// 	case "ArrowUp":
+	// 		keyboardKeys.up = true;
+	// 		break
+	// 	case "ArrowDown":
+	// 		keyboardKeys.down = true;
+	// 		break
+	// 	case "ArrowRight":
+	// 		keyboardKeys.right = true;
+	// 		break
+	// 	case "ArrowLeft":
+	// 		keyboardKeys.left = true;
+	// 		break
+	// 	case " ":
+	// 		keyboardKeys.shoot = true;
+	// 		break}})
+
+
+	// window.addEventListener('keyup',(e2) => {
+	// 	switch (e2.key){
+	// 	case "ArrowUp":
+	// 		keyboardKeys.up = false;
+	// 		break
+	// 	case "ArrowDown":
+	// 		keyboardKeys.down = false;
+	// 		break
+	// 	case "ArrowRight":
+	// 		keyboardKeys.right = false;
+	// 		break
+	// 	case "ArrowLeft":
+	// 		keyboardKeys.left = false;
+	// 		break
+	// 	case " ":
+	// 		keyboardKeys.shoot = false
+	// 		break}})
 	
 } // end function setupGame
 
 
 function drawCanvas() {
 	canvas.width  = screen.width*0.98;
-	canvas.height = screen.height*0.8;
+	canvas.height = screen.height*0.7;
 	bgImage = new Image();
 	bgImage.src = "images/bg.jpg"
 	bgImage.width = canvas.width
@@ -220,7 +220,7 @@ function start() {
 	gameSound = new sound("sound/onlymp3.to - Space Trance (super)-XfP36F-3pJ0-256k-1657556329695.mp3");
     laserSound = new sound("sound/Laser Gun Sound Effect.mp3");
 	strikeSound = new sound("sound/SUSPENSE STRIKE SOUND EFFECT.mp3");
-    // gameSound.play();
+    gameSound.play();
 	gameTimer = setInterval(updateTimer, 1000);
 	speedUpTimer = setInterval(makeGameFaster, 5000)
 	
@@ -343,13 +343,13 @@ function printHighScores(){
 	let list = document.getElementById("scoresList");
 	list.innerHTML = ''
 	let data = currentUser.highScores.slice()
-	data.sort().reverse()
-	data.forEach((item)=>{
+	let sortedData = data.sort(function(a, b) {return a - b;}).reverse()
+	for(let i=0; i<sortedData.length; i++){
+		console.log(sortedData[i])
 		let li = document.createElement("li");
-		li.innerText = "Name: " + currentUser.username + " Score: " + item;
+		li.innerText = "Name: " + currentUser.username + " Score: " + sortedData[i];
 		list.appendChild(li);
-	})
-	console.log("List created")
+	}
 	scoreBoard.style.display = "block"
 }
 
