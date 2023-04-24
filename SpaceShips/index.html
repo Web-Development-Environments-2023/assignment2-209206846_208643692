@@ -27,7 +27,7 @@
     <!-- <center><h1>Space Ship</h1></center>
     <center><canvas id = "theCanvas" width = "600" height = "600"></canvas></center>
     <center><input id = "startButton" type = "button" value = "Start Game"></center> -->
-      <nav>
+      <nav id="nav">
         <div id="title">
           <!-- <img src="logo.png" alt="Logo"> -->
           <span class="title">Space Shooters</span>
@@ -82,7 +82,7 @@
       </div>
       
       <!-- Welcome screen -->
-      <div id="Welcome" style="display: block;">
+      <div id="Welcome" style="display: none;">
         <h1>Welcome to Our Space Shooting Game</h1>
         <button id="login-button" onclick="loginBtnHandler()">Login</button>
         <button id="register-button" onclick="registerBtnHandler()">Register</button>
@@ -160,14 +160,14 @@
       </div>
       
       <!-- Game Canvas -->
-      <div id="Game" style="display: none;">
+      <div id="Game" style="display: block;">
         
-          <p class="game-timer"><span id="gameTimer">120</span> Seconds Remaining!</p>
-          <p class="live"><span id="lives">3</span> Lives Remaining!</p>
-          <p class="scores">Score: <span id="score">0</span></p>
-          <button id="playAgainButton" onclick="start()">Start Game!</button>
-        
-        <canvas id="canvas" width="1200" height="800" style="display: none;"></canvas>
+        <p class="game-timer"><span id="gameTimer">120</span> Seconds Remaining!</p>
+        <p class="live"><span id="lives">3</span> Lives Remaining!</p>
+        <p class="scores">Score: <span id="score">0</span></p>
+        <button id="playAgainButton" onclick="start()">Start Game!</button>
+
+        <canvas id="canvas" width="800" height="800" style="display: none;"></canvas>
       </div>
       <!-- <input id = "startButton" type = "button" value = "Start Game"> -->
 

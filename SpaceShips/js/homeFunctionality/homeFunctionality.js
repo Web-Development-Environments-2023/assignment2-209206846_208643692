@@ -8,6 +8,7 @@ window.addEventListener("load", ()=>{
     let registerDiv = document.getElementById("Register");
     let gameSettingsDiv = document.getElementById("GameSettings");
     let gameDiv = document.getElementById("Game");
+    let footer = document.getElementById("footer");
 
     // When the user clicks on the home button, return to welcome screen
     returnHome.onclick = function() {
@@ -16,6 +17,7 @@ window.addEventListener("load", ()=>{
         registerDiv.style.display = "none";
         gameSettingsDiv.style.display = "none";
         gameDiv.style.display = "none";
+        footer.style.display = "block";
     }
 
 

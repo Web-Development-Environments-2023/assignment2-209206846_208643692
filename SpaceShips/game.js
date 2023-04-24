@@ -127,7 +127,7 @@ function setupGame()
 
 
 function drawCanvas() {
-	canvas.width  = screen.width*0.98;
+	canvas.width  = screen.width;
 	canvas.height = screen.height*0.7;
 	bgImage = new Image();
 	bgImage.src = "images/bg.jpg"
@@ -203,6 +203,32 @@ function changeFooterPlaceToFixed(){
 	document.getElementById("footer").style.position = "fixed";
 }
 
+function changeFooterDisplayToNone(){
+	// change footer position
+	document.getElementById("footer").style.display = "none";
+}
+
+function changeFooterDisplayToBlock(){
+	// change footer position
+	document.getElementById("footer").style.display = "block";
+}
+
+function changeNavDisplayToNone(){
+	// change footer position
+	document.getElementById("nav").style.display = "none";
+}
+
+function changeNavDisplayToFlex(){
+	// change footer position
+	document.getElementById("nav").style.display = "flex";
+}
+
+function changeStatsDisplayForGame(){
+}
+
+function revertStats(){
+}
+
 function start() {
 	// setInterval is a built-in function that will call the given function
 	// every N milliseconds (1 second = 1000 ms)
@@ -227,7 +253,9 @@ function start() {
 	// We don't want the to be able to restart the timer while it is running,
 	// so hide the button.
 	playAgainButton.style.visibility = "hidden";
-	changeFooterPlaceToRelative()
+	changeFooterDisplayToNone()
+	changeNavDisplayToNone()
+	changeStatsDisplayForGame()
 }
 
 function updateTimer() {
@@ -264,7 +292,9 @@ function gameOver() {
 	canvasDiv.style.display = "none"
 	printResults()
 	printHighScores()
-	changeFooterPlaceToFixed()
+	changeFooterDisplayToBlock()
+	changeNavDisplayToFlex()
+	revertStats()
   }
 
   function updateScore(){

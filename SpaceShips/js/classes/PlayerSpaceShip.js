@@ -16,7 +16,7 @@ class PlayerSpaceShip{
 
 		this.position = {
 			x: Math.random() * (800 - 300) + 300,
-			y: 650
+			y: 400
 		}
 
 		this.width = 100,
@@ -33,7 +33,7 @@ class PlayerSpaceShip{
 		// c.fillStyle = 'red'
 		// c.fillRect(this.position.x,this.position.y,this.width,this.height)
         this.checkHits()
-        c.drawImage(this.image,this.position.x,this.position.y,this.image.width*0.8,this.image.height*0.8)
+        c.drawImage(this.image,this.position.x,this.position.y,this.image.width*0.7,this.image.height*0.7)
 	}
 
 	update() {
@@ -52,8 +52,8 @@ class PlayerSpaceShip{
         const damage = 1;
         const bulletX = this.position.x + this.width/2;
         const bulletY = this.position.y ;
-        const w = 10;
-        const h = 15;
+        const w = 5;
+        const h = 10;
         const color = "red"
 
         this.bulletController.shoot(bulletX, bulletY, speed, damage, w, h, color, delay);

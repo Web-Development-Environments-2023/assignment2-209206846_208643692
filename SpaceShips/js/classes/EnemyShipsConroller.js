@@ -44,7 +44,7 @@ class EnemyShipsConroller{
                 col_x_position = 0 
             }
             this.enemyElienShips[i].position.x = col_x_position*100
-            this.enemyElienShips[i].position.y = row_y_position*70   
+            this.enemyElienShips[i].position.y = row_y_position*60   
             col_x_position++ // so each one of the five ships will be on thse place col x
             
        }
@@ -93,8 +93,8 @@ class EnemyShipsConroller{
         const damage = 1;
         const bulletX = shootingShip.position.x;
         const bulletY = shootingShip.position.y;
-        const w = 10;
-        const h = 15;
+        const w = 5;
+        const h = 10;
         const color = "green"
 
         this.enemiesBulletController.shoot(bulletX, bulletY, speed, damage, w, h, color);
