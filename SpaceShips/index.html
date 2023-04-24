@@ -82,7 +82,7 @@
       </div>
       
       <!-- Welcome screen -->
-      <div id="Welcome" style="display: none;">
+      <div id="Welcome" style="display: block;">
         <h1>Welcome to Our Space Shooting Game</h1>
         <button id="login-button" onclick="loginBtnHandler()">Login</button>
         <button id="register-button" onclick="registerBtnHandler()">Register</button>
@@ -160,11 +160,11 @@
       </div>
       
       <!-- Game Canvas -->
-      <div id="Game" style="display: block;">
+      <div id="Game" style="display: none;">
         
-        <p class="game-timer"><span id="gameTimer">120</span> Seconds Remaining!</p>
-        <p class="live"><span id="lives">3</span> Lives Remaining!</p>
-        <p class="scores">Score: <span id="score">0</span></p>
+        <p class="game-timer" id="gt"><span id="gameTimer">120</span> Seconds Remaining!</p>
+        <p class="live" id="liv"><span id="lives">3</span> Lives Remaining!</p>
+        <p class="scores" id="sco">Score: <span id="score">0</span></p>
         <button id="playAgainButton" onclick="start()">Start Game!</button>
 
         <canvas id="canvas" width="800" height="800" style="display: none;"></canvas>

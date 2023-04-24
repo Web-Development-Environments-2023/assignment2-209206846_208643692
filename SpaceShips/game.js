@@ -129,13 +129,15 @@ function setupGame()
 function drawCanvas() {
 	canvas.width  = screen.width;
 	canvas.height = screen.height*0.7;
+	// canvas.width  = screen.width*0.5;
+	// canvas.height = screen.height*0.5;
 	bgImage = new Image();
 	bgImage.src = "images/bg.jpg"
 	bgImage.width = canvas.width
 	bgImage.height = canvas.height
 	
-	playerSpaceShip.position.x = Math.random() * (canvas.width)
-	playerSpaceShip.position.y = canvas.height * 0.8
+	// playerSpaceShip.position.x = Math.random() * (canvas.width)
+	// playerSpaceShip.position.y = canvas.height * 0.8
   }
 
 
@@ -224,9 +226,34 @@ function changeNavDisplayToFlex(){
 }
 
 function changeStatsDisplayForGame(){
+	gt = document.getElementById("gt")
+	liv = document.getElementById("liv")
+	sco = document.getElementById("sco")
+
+	gt.style.position = "fixed"
+	gt.style.top = "-10px"
+
+	liv.style.position = "fixed"
+	liv.style.top = "-10px"
+
+	sco.style.position = "fixed"
+	sco.style.top = "-10px"
+
 }
 
 function revertStats(){
+	gt = document.getElementById("gt")
+	liv = document.getElementById("liv")
+	sco = document.getElementById("sco")
+
+	gt.style.position = "absolute"
+	gt.style.top = "80px"
+
+	liv.style.position = "absolute"
+	liv.style.top = "80px"
+
+	sco.style.position = "absolute"
+	sco.style.top = "80px"
 }
 
 function start() {
