@@ -136,7 +136,12 @@ function submitRegister(){
 			surname: formData.get('surname'),
 			email: formData.get('email'),
 			birthday: formData.get('birthday'),
-			points:0
+			highScores: [],
+			up:"ArrowUp",
+			down:"ArrowDown",
+        	left:"ArrowLeft",
+			right:"ArrowRight",
+        	shot:" "
 		};
 
 
@@ -145,7 +150,7 @@ function submitRegister(){
 		// Show a confirmation message to the user
 		alert('Registration successful!');
 
-		returnToWelcome();
+		returnToLogin();
 
 	});
 }
@@ -188,15 +193,13 @@ function LoginSucced(){
 	loginScreen.style.display = "none";
 }
 
-function returnToWelcome(){
+function returnToLogin(){
 	let registerScreen = document.getElementById("Register");
-	let welcomeScreen = document.getElementById("Welcome");
-	if (welcomeScreen.style.display === "none") {
-		welcomeScreen.style.display = "block";
+	let loginScreen = document.getElementById("Login");
+	if (loginScreen.style.display === "none") {
+		loginScreen.style.display = "block";
 	  } else {
-		welcomeScreen.style.display = "none";
+		loginScreen.style.display = "none";
 	  }
 	registerScreen.style.display = "none";
-
-	changeFooterPlaceToFixed()
 }

@@ -38,53 +38,11 @@ function setupGame()
    // get the canvas, its context and setup its click event handler
    canvas = document.getElementById( "canvas" );
    c = canvas.getContext("2d");
+   drawCanvas();
 //    c.canvas.width = window.innerWidth;
 //    c.canvas.height = window.innerHeight;
-
-   
-
-
 //    screen.addEventListener('resize', drawCanvas, false);	
 	
-
-	drawCanvas()
-
-	window.addEventListener('keydown',(e1) => {
-		switch (e1.key){
-		case currentUser.up:
-			keyboardKeys.up = true;
-			break
-		case currentUser.down:
-			keyboardKeys.down = true;
-			break
-		case currentUser.right:
-			keyboardKeys.right = true;
-			break
-		case currentUser.left:
-			keyboardKeys.left = true;
-			break
-		case currentUser.shot:
-			keyboardKeys.shoot = true;
-			break}})
-
-
-	window.addEventListener('keyup',(e2) => {
-		switch (e2.key){
-		case currentUser.up:
-			keyboardKeys.up = false;
-			break
-		case currentUser.down:
-			keyboardKeys.down = false;
-			break
-		case currentUser.right:
-			keyboardKeys.right = false;
-			break
-		case currentUser.left:
-			keyboardKeys.left = false;
-			break
-		case currentUser.shot:
-			keyboardKeys.shoot = false
-			break}})
 
 	// window.addEventListener('keydown',(e1) => {
 	// 	switch (e1.key){
@@ -139,6 +97,90 @@ function drawCanvas() {
 	// playerSpaceShip.position.x = Math.random() * (canvas.width)
 	// playerSpaceShip.position.y = canvas.height * 0.8
   }
+
+function addEvents(){
+	window.addEventListener('keydown',(e1) => {
+		switch (e1.key){
+		case currentUser.up:
+			keyboardKeys.up = true;
+			break
+		case currentUser.down:
+			keyboardKeys.down = true;
+			break
+		case currentUser.right:
+			keyboardKeys.right = true;
+			break
+		case currentUser.left:
+			keyboardKeys.left = true;
+			break
+		case currentUser.shot:
+			keyboardKeys.shoot = true;
+			break}})
+
+
+	window.addEventListener('keyup',(e2) => {
+		switch (e2.key){
+		case currentUser.up:
+			keyboardKeys.up = false;
+			break
+		case currentUser.down:
+			keyboardKeys.down = false;
+			break
+		case currentUser.right:
+			keyboardKeys.right = false;
+			break
+		case currentUser.left:
+			keyboardKeys.left = false;
+			break
+		case currentUser.shot:
+			keyboardKeys.shoot = false
+			break}})
+	
+	keyboardKeys.up = false
+	keyboardKeys.down = false
+	keyboardKeys.right = false
+	keyboardKeys.left = false
+	keyboardKeys.shoot = false
+}
+
+function removeEvents(){
+	window.removeEventListener('keydown',(e1) => {
+		switch (e1.key){
+		case currentUser.up:
+			keyboardKeys.up = true;
+			break
+		case currentUser.down:
+			keyboardKeys.down = true;
+			break
+		case currentUser.right:
+			keyboardKeys.right = true;
+			break
+		case currentUser.left:
+			keyboardKeys.left = true;
+			break
+		case currentUser.shot:
+			keyboardKeys.shoot = true;
+			break}})
+
+
+	window.removeEventListener('keyup',(e2) => {
+		switch (e2.key){
+		case currentUser.up:
+			keyboardKeys.up = false;
+			break
+		case currentUser.down:
+			keyboardKeys.down = false;
+			break
+		case currentUser.right:
+			keyboardKeys.right = false;
+			break
+		case currentUser.left:
+			keyboardKeys.left = false;
+			break
+		case currentUser.shot:
+			keyboardKeys.shoot = false
+			break}})
+}
 
 
 function updatePositions(){
@@ -260,6 +302,7 @@ function start() {
 	// setInterval is a built-in function that will call the given function
 	// every N milliseconds (1 second = 1000 ms)
 	newGame()
+	addEvents()
 	goodBulletController = new BulletControllerGoodPlayer(canvas);
 	badBulletController = new BulletControllerEnemies(canvas);
 	playerSpaceShip = new PlayerSpaceShip(goodBulletController, badBulletController);
@@ -270,6 +313,7 @@ function start() {
 	timeLeft = originalTimeLeft
 	playerSpaceShip.lives = 3
 	enemyShipsConroller.playerScore = 0
+	timesFaster = 0
 	gameSound = new sound("sound/onlymp3.to - Space Trance (super)-XfP36F-3pJ0-256k-1657556329695.mp3");
     laserSound = new sound("sound/Laser Gun Sound Effect.mp3");
 	strikeSound = new sound("sound/SUSPENSE STRIKE SOUND EFFECT.mp3");
@@ -310,6 +354,7 @@ function gameOver() {
 	// This cancels the setInterval, so the updateTimer stops getting called
 	clearInterval(gameTimer);
 	clearInterval(intervalTimer)
+	removeEvents()
 	let playAgainButton = document.getElementById("playAgainButton")
 	gameSound.stop()
 	
