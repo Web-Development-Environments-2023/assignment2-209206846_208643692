@@ -16,7 +16,7 @@ class PlayerSpaceShip{
 
 		this.position = {
 			x: Math.random() * (800 - 300) + 300,
-			y: 400
+			y: window.innerHeight*0.7
 		}
 
 		this.width = 100,
