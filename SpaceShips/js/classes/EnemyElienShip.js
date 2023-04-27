@@ -11,8 +11,7 @@ class EnemyElienShip{
 		}
 
 		if (points == 10){
-			// this.image.src = "./images/Alien1.png"
-			this.image.src = "./images/ElienShip.png"
+			this.image.src = "./images/Alien1.png"
 			this.image.width = window.innerWidth * 0.056
 			this.image.height = window.innerHeight * 0.112
 			this.width = window.innerWidth * 0.056
@@ -20,8 +19,7 @@ class EnemyElienShip{
 		}
 
 		if (points == 15){
-			// this.image.src = "./images/Alien2.png"
-			this.image.src = "./images/ElienShip.png"
+			this.image.src = "./images/Alien2.png"
 			this.image.width = window.innerWidth * 0.056
 			this.image.height = window.innerHeight * 0.112
 			this.width = window.innerWidth * 0.056
@@ -29,8 +27,7 @@ class EnemyElienShip{
 		}
 
 		if (points == 20){
-			// this.image.src = "./images/Alien3.png"
-			this.image.src = "./images/ElienShip.png"
+			this.image.src = "./images/Alien3.png"
 			this.image.width = window.innerWidth * 0.056
 			this.image.height = window.innerHeight * 0.112
 			this.width = window.innerWidth * 0.056

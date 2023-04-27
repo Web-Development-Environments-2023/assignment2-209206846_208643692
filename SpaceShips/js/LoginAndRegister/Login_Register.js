@@ -17,6 +17,11 @@ var users =[
 ]
 
 
+document.addEventListener("DOMContentLoaded", ()=>{
+	submitLogin();
+	submitRegister();
+});
+
 function changeFooterPlaceToRelative(){
 	// change footer position
 	document.getElementById("footer").style.position = "relative";
@@ -59,9 +64,10 @@ function registerBtnHandler(){
 function submitLogin(){
 	// Get the registration form element
 	const loginForm = document.getElementById('login-form');
+	const loginFormBtn = document.getElementById('login-submit-btn');
 
 	// Add event listener to the form's submit event
-	loginForm.addEventListener('submit', (event) => {
+	loginFormBtn.addEventListener("click", function (event) {
 		// Prevent the form from submitting and refreshing the page
 		event.preventDefault();
 	
@@ -90,15 +96,16 @@ function submitLogin(){
 			alert("No such username!")
 		}
 
-	});
+	},false);
 }
 
 function submitRegister(){
 		// Get the registration form element
 	const registerForm = document.getElementById('register-form');
+	const registerFormBtn = document.getElementById('register-submit-btn');
 
 	// Add event listener to the form's submit event
-	registerForm.addEventListener('submit', (event) => {
+	registerFormBtn.addEventListener("click", function (event) {
 		// Prevent the form from submitting and refreshing the page
 		event.preventDefault();
 
@@ -152,7 +159,7 @@ function submitRegister(){
 
 		returnToLogin();
 
-	});
+	},false);
 }
 
 function CheckPassword(inputtxt) 

@@ -40,6 +40,8 @@ shootInput.addEventListener('keydown', function(event) {
   shootInput.value = checkForSpaceElseOriginalKey(event);
 });
 
+settingsSubmitBtnHandler();
+
 }, false);
 
 
@@ -62,9 +64,10 @@ function checkForSpaceElseOriginalKey(e){
 function settingsSubmitBtnHandler(){
 	// Get the registration form element
 	const GameSettingsForm = document.getElementById('GameSettingsForm');
+  const startButton = document.getElementById('startButton');
 
 	// Add event listener to the form's submit event
-	GameSettingsForm.addEventListener('submit', (event) => {
+	startButton.addEventListener("click", function (event) {
 		// Prevent the form from submitting and refreshing the page
 		event.preventDefault();
 	
@@ -117,5 +120,5 @@ function settingsSubmitBtnHandler(){
     Game.style.display = "block";
 
     changeFooterPlaceToFixed()
-	});
+	},false);
 }
