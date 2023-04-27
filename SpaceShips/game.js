@@ -128,7 +128,8 @@ function addEvents(){
 			keyboardKeys.shoot = false
 			break}})
 
-	window.addEventListener('resize', drawCanvas);	
+	window.addEventListener('resize', drawCanvas);
+	window.addEventListener('resize', updateSizes);	
 	
 	keyboardKeys.up = false
 	keyboardKeys.down = false
@@ -176,6 +177,7 @@ function removeEvents(){
 			break}})
 
 	window.removeEventListener('resize', drawCanvas);	
+	window.removeEventListener('resize', updateSizes);	
 }
 
 
@@ -446,8 +448,6 @@ function printResults(){
 
 function addHighScore(){
 	let finalScore = enemyShipsConroller.playerScore
-	// let arr = currentUser.highScores
-	// let ind = binarySearch(arr, finalScore)
 	currentUser.highScores.push(finalScore)
 }
 
@@ -491,5 +491,24 @@ function stopAndNew(){
     gameSound.play();
 	gameTimer = setInterval(updateTimer, 1000);
 	speedUpTimer = setInterval(makeGameFaster, 5000)
+}
+
+function updateSizes(){
+	playerSpaceShip.width = window.innerWidth * 0.056
+	playerSpaceShip.height = window.innerHeight * 0.112
+	playerSpaceShip.image.width = window.innerWidth * 0.056
+	playerSpaceShip.image.height = window.innerHeight * 0.112
+
+
+	enemyShipsConroller.currentXChange = window.innerWidth * 0.0004
+	for(let i=0; i< enemyShipsConroller.enemyElienShips.length ; i++){
+		enemyShipsConroller.enemyElienShips[i].width = window.innerWidth * 0.056
+		enemyShipsConroller.enemyElienShips[i].height = window.innerHeight * 0.112
+		enemyShipsConroller.enemyElienShips[i].image.width = window.innerWidth * 0.056
+		enemyShipsConroller.enemyElienShips[i].image.height = window.innerHeight * 0.112
+	}
+	// To Be Decided: enemyShipsConroller.positionTheShips()
+
+	// update scoreboard as well
 }
 

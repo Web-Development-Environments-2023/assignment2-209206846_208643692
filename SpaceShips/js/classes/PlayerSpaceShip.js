@@ -3,8 +3,8 @@ class PlayerSpaceShip{
 	constructor(bulletController, badBulletController){
         this.image = new Image();
         this.image.src = "./images/mainPlayer.png"
-        this.image.width = window.innerWidth * 0.08
-        this.image.height = window.innerHeight * 0.16
+        this.image.width = window.innerWidth * 0.056
+        this.image.height = window.innerHeight * 0.112
 
         // this.imageShot = new Image();
         // this.imageShot.src = "./images/goodPlayerShot.png"
@@ -19,8 +19,8 @@ class PlayerSpaceShip{
 			y: window.innerHeight*0.7
 		}
 
-		this.width = window.innerWidth * 0.08,
-		this.height = window.innerHeight * 0.16,
+		this.width = window.innerWidth * 0.056,
+		this.height = window.innerHeight * 0.112,
 		this.sides = {
 			bottom: this.position.y + this.height
 		}
@@ -33,7 +33,7 @@ class PlayerSpaceShip{
 		// c.fillStyle = 'red'
 		// c.fillRect(this.position.x,this.position.y,this.width,this.height)
         this.checkHits()
-        c.drawImage(this.image,this.position.x,this.position.y,this.image.width*0.7,this.image.height*0.7)
+        c.drawImage(this.image,this.position.x,this.position.y,this.image.width,this.image.height)
 	}
 
 	update() {
