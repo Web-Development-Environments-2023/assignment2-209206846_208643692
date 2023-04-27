@@ -25,7 +25,7 @@ class EnemyShipsConroller{
         this.numberOfEnemiesShips = numberOfEnemiesShips
         this.positionTheShips()
         this.currentBulletSpeed = 2.5
-        this.currentXChange = 0.5
+        this.currentXChange = window.innerWidth * 0.0004
         this.playerScore = 0
     }
 
@@ -43,8 +43,8 @@ class EnemyShipsConroller{
                 row_y_position++ 
                 col_x_position = 0 
             }
-            this.enemyElienShips[i].position.x = col_x_position*100
-            this.enemyElienShips[i].position.y = row_y_position*60   
+            this.enemyElienShips[i].position.x = col_x_position*window.innerWidth * 0.08
+            this.enemyElienShips[i].position.y = row_y_position*window.innerHeight * 0.096
             col_x_position++ // so each one of the five ships will be on thse place col x
             
        }
@@ -64,10 +64,10 @@ class EnemyShipsConroller{
             }
             else{
     
-            if(this.enemyElienShips[i].position.x <= 10){
+            if(this.enemyElienShips[i].position.x <= window.innerWidth * 0.008){
                 this.moveEnemiesRight_or_Left = true
             }
-            else if(this.enemyElienShips[i].position.x >= canvas.width-100){
+            else if(this.enemyElienShips[i].position.x >= canvas.width-window.innerWidth * 0.08){
                 this.moveEnemiesRight_or_Left = false
             }
     
@@ -93,8 +93,8 @@ class EnemyShipsConroller{
         const damage = 1;
         const bulletX = shootingShip.position.x;
         const bulletY = shootingShip.position.y;
-        const w = 5;
-        const h = 10;
+        const w = window.innerHeight * 0.008;
+        const h = window.innerHeight * 0.016;
         const color = "green"
 
         this.enemiesBulletController.shoot(bulletX, bulletY, speed, damage, w, h, color);

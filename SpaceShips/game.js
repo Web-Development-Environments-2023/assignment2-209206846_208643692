@@ -39,9 +39,6 @@ function setupGame()
    canvas = document.getElementById( "canvas" );
    c = canvas.getContext("2d");
    drawCanvas();
-//    c.canvas.width = window.innerWidth;
-//    c.canvas.height = window.innerHeight;
-//    screen.addEventListener('resize', drawCanvas, false);	
 	
 
 	// window.addEventListener('keydown',(e1) => {
@@ -85,17 +82,12 @@ function setupGame()
 
 
 function drawCanvas() {
-	canvas.width  = screen.width;
-	canvas.height = screen.height*0.7;
-	// canvas.width  = screen.width*0.5;
-	// canvas.height = screen.height*0.5;
+	canvas.width  = window.innerWidth;
+	canvas.height = window.innerHeight * 0.87;
 	bgImage = new Image();
 	bgImage.src = "images/bg.jpg"
 	bgImage.width = canvas.width
 	bgImage.height = canvas.height
-	
-	// playerSpaceShip.position.x = Math.random() * (canvas.width)
-	// playerSpaceShip.position.y = canvas.height * 0.8
   }
 
 function addEvents(){
@@ -135,6 +127,8 @@ function addEvents(){
 		case currentUser.shot:
 			keyboardKeys.shoot = false
 			break}})
+
+	window.addEventListener('resize', drawCanvas);	
 	
 	keyboardKeys.up = false
 	keyboardKeys.down = false
@@ -180,6 +174,8 @@ function removeEvents(){
 		case currentUser.shot:
 			keyboardKeys.shoot = false
 			break}})
+
+	window.removeEventListener('resize', drawCanvas);	
 }
 
 

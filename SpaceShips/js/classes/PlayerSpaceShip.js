@@ -3,8 +3,8 @@ class PlayerSpaceShip{
 	constructor(bulletController, badBulletController){
         this.image = new Image();
         this.image.src = "./images/mainPlayer.png"
-        this.image.width = 100
-        this.image.height = 100
+        this.image.width = window.innerWidth * 0.08
+        this.image.height = window.innerHeight * 0.16
 
         // this.imageShot = new Image();
         // this.imageShot.src = "./images/goodPlayerShot.png"
@@ -15,12 +15,12 @@ class PlayerSpaceShip{
         this.badBulletController = badBulletController
 
 		this.position = {
-			x: Math.random() * (800 - 300) + 300,
+			x: Math.random() * window.innerWidth,
 			y: window.innerHeight*0.7
 		}
 
-		this.width = 100,
-		this.height = 100,
+		this.width = window.innerWidth * 0.08,
+		this.height = window.innerHeight * 0.16,
 		this.sides = {
 			bottom: this.position.y + this.height
 		}
@@ -52,8 +52,8 @@ class PlayerSpaceShip{
         const damage = 1;
         const bulletX = this.position.x + this.width/2;
         const bulletY = this.position.y ;
-        const w = 5;
-        const h = 10;
+        const w = window.innerHeight * 0.008;
+        const h = window.innerHeight * 0.016;
         const color = "red"
 
         this.bulletController.shoot(bulletX, bulletY, speed, damage, w, h, color, delay);
