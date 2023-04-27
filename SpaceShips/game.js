@@ -271,15 +271,22 @@ function changeStatsDisplayForGame(){
 	gt = document.getElementById("gt")
 	liv = document.getElementById("liv")
 	sco = document.getElementById("sco")
+	startNew = document.getElementById("newGame")
 
 	gt.style.position = "fixed"
 	gt.style.top = "-10px"
 
 	liv.style.position = "fixed"
 	liv.style.top = "-10px"
+	liv.style.marginLeft = "38%"
 
 	sco.style.position = "fixed"
 	sco.style.top = "-10px"
+	sco.style.marginLeft = "67%"
+
+	startNew.style.display = "block"
+	startNew.style.position = "fixed"
+	startNew.style.top = "13px"
 
 }
 
@@ -287,15 +294,23 @@ function revertStats(){
 	gt = document.getElementById("gt")
 	liv = document.getElementById("liv")
 	sco = document.getElementById("sco")
+	startNew = document.getElementById("newGame")
 
 	gt.style.position = "absolute"
 	gt.style.top = "80px"
 
 	liv.style.position = "absolute"
 	liv.style.top = "80px"
+	liv.style.marginLeft = "40%"
 
 	sco.style.position = "absolute"
 	sco.style.top = "80px"
+	sco.style.marginLeft = "75%"
+
+	startNew.style.display = "none"
+	startNew.style.position = "absolute"
+	startNew.style.top = "80px"
+
 }
 
 function start() {
@@ -354,6 +369,7 @@ function gameOver() {
 	// This cancels the setInterval, so the updateTimer stops getting called
 	clearInterval(gameTimer);
 	clearInterval(intervalTimer)
+	clearInterval(speedUpTimer)
 	removeEvents()
 	let playAgainButton = document.getElementById("playAgainButton")
 	gameSound.stop()
@@ -455,27 +471,29 @@ function printHighScores(){
 	scoreBoard.style.display = "block"
 }
 
-// function binarySearch(arr, val) {
-// 	let start = 0;
-// 	let end = arr.length - 1;
-// 	let mid = 0;
-
-// 	console.log(mid)
-// 	while (start <= end) {
-// 	  mid = Math.floor((start + end) / 2);
-  
-// 	  if (arr[mid] === val) {
-// 		return mid;
-// 	  }
-  
-// 	  if (val < arr[mid]) {
-// 		end = mid - 1;
-// 	  } else {
-// 		start = mid + 1;
-// 	  }
-// 	}
-// 	console.log(mid)
-// 	return mid;
-//   }
-
+function stopAndNew(){
+	clearInterval(gameTimer);
+	clearInterval(intervalTimer)
+	clearInterval(speedUpTimer)
+	removeEvents()
+	gameSound.stop()
+	
+	// re-show the button, so they can start it again
+	newGame()
+	addEvents()
+	goodBulletController = new BulletControllerGoodPlayer(canvas);
+	badBulletController = new BulletControllerEnemies(canvas);
+	playerSpaceShip = new PlayerSpaceShip(goodBulletController, badBulletController);
+	enemyShipsConroller = new EnemyShipsConroller(20, goodBulletController, badBulletController);
+	timeLeft = originalTimeLeft
+	playerSpaceShip.lives = 3
+	enemyShipsConroller.playerScore = 0
+	timesFaster = 0
+	gameSound = new sound("sound/onlymp3.to - Space Trance (super)-XfP36F-3pJ0-256k-1657556329695.mp3");
+    laserSound = new sound("sound/Laser Gun Sound Effect.mp3");
+	strikeSound = new sound("sound/SUSPENSE STRIKE SOUND EFFECT.mp3");
+    gameSound.play();
+	gameTimer = setInterval(updateTimer, 1000);
+	speedUpTimer = setInterval(makeGameFaster, 5000)
+}
 

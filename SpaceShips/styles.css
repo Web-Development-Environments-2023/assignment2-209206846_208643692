@@ -472,6 +472,20 @@ button[type=submit]:hover {
   margin-left: 75%; /* Added margin from top */
 }
 
-
+.newGame {
+  color: #25943d;
+  font-family: "Orbitron", sans-serif;
+  font-size: 150%;
+  font-weight: bold;
+  position: absolute;
+  display: inline;
+  letter-spacing: 5px;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #25943d;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  margin-left: 83%; /* Added margin from top */
+}
 
 audio { display:none;}
