@@ -272,19 +272,19 @@ function changeStatsDisplayForGame(){
 	startNew = document.getElementById("newGame")
 
 	gt.style.position = "fixed"
-	gt.style.top = "-10px"
+	gt.style.top = "-0.8vw"
 
 	liv.style.position = "fixed"
-	liv.style.top = "-10px"
+	liv.style.top = "-0.8vw"
 	liv.style.marginLeft = "38%"
 
 	sco.style.position = "fixed"
-	sco.style.top = "-10px"
+	sco.style.top = "-0.8vw"
 	sco.style.marginLeft = "67%"
 
 	startNew.style.display = "block"
 	startNew.style.position = "fixed"
-	startNew.style.top = "13px"
+	startNew.style.top = "1.05vw"
 
 }
 
@@ -295,19 +295,19 @@ function revertStats(){
 	startNew = document.getElementById("newGame")
 
 	gt.style.position = "absolute"
-	gt.style.top = "80px"
+	gt.style.top = "6.4vw"
 
 	liv.style.position = "absolute"
-	liv.style.top = "80px"
+	liv.style.top = "6.4vw"
 	liv.style.marginLeft = "40%"
 
 	sco.style.position = "absolute"
-	sco.style.top = "80px"
+	sco.style.top = "6.4vw"
 	sco.style.marginLeft = "75%"
 
 	startNew.style.display = "none"
 	startNew.style.position = "absolute"
-	startNew.style.top = "80px"
+	startNew.style.top = "6.4vw"
 
 }
 
@@ -468,6 +468,8 @@ function printHighScores(){
 }
 
 function stopAndNew(){
+	let updateTimerOnce = document.getElementById("gameTimer")
+	updateTimerOnce.textContent = originalTimeLeft
 	clearInterval(gameTimer);
 	clearInterval(intervalTimer)
 	clearInterval(speedUpTimer)

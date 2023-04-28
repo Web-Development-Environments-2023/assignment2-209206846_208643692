@@ -97,6 +97,8 @@ function settingsSubmitBtnHandler(){
     }
 
     originalTimeLeft = formData.get('game-time')
+    let updateTimerOnce = document.getElementById("gameTimer")
+    updateTimerOnce.textContent = originalTimeLeft
 
     //global player moves
     currentUser.up = up;

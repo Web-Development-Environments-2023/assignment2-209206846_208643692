@@ -427,64 +427,64 @@ button[type=submit]:hover {
 .game-timer {
   color: #00ffcc;
   font-family: "Orbitron", sans-serif;
-  font-size: 150%;
+  font-size: 2vw;
   font-weight: bold;
   position: absolute;
   display: inline;
-  letter-spacing: 5px;
-  border-width: 2px;
+  letter-spacing: 0.4vw;
+  border-width: 0.16vw;
   border-style: dashed;
   border-color: #00ffcc;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  margin-left: 20px; /* Added margin from top */
+  padding: 0.8vw;
+  margin-left: 1.5%; /* Added margin from top */
 }
 
 .live {
   color: #ff3366;
   font-family: "Orbitron", sans-serif;
-  font-size: 150%;
+  font-size: 2vw;
   font-weight: bold;
   position: absolute;
   display: inline;
-  letter-spacing: 5px;
-  border-width: 2px;
+  letter-spacing: 0.4vw;
+  border-width: 0.16vw;
   border-style: dashed;
   border-color: #ff3366;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  margin-left: 40%; /* Added margin from top */
+  padding: 0.8vw;
+  margin-left: 39%; /* Added margin from top */
 }
 
 .scores {
   color: #ffcc00;
   font-family: "Orbitron", sans-serif;
-  font-size: 150%;
+  font-size: 2vw;
   font-weight: bold;
   position: absolute;
   display: inline;
-  letter-spacing: 5px;
-  border-width: 2px;
+  letter-spacing: 0.4vw;
+  border-width: 0.16vw;
   border-style: dashed;
   border-color: #ffcc00;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  margin-left: 75%; /* Added margin from top */
+  padding: 0.8vw;
+  margin-left: 72%; /* Added margin from top */
 }
 
 .newGame {
   color: #25943d;
   font-family: "Orbitron", sans-serif;
-  font-size: 150%;
+  font-size: 2vw;
   font-weight: bold;
   position: absolute;
   display: inline;
-  letter-spacing: 5px;
-  border-width: 2px;
+  letter-spacing: 0.4vw;
+  border-width: 0.16vw;
   border-style: dashed;
   border-color: #25943d;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
+  padding: 0.8vw;
   margin-left: 83%; /* Added margin from top */
 }
 
