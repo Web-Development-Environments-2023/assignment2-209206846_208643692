@@ -2,5 +2,7 @@
 
 מגישים:
 אופק לוצקי-209206846
+
 גד מיכאל מילר-208643692
+
 לינק לאתר-https://web-development-environments-2023.github.io/assignment2-209206846_208643692/
