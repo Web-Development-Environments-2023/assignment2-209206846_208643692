@@ -97,6 +97,10 @@ function settingsSubmitBtnHandler(){
     }
 
     originalTimeLeft = formData.get('game-time')
+    if (originalTimeLeft < 120){
+      alert("Minimum game time is 120 seconds")
+      return;
+    }
     let updateTimerOnce = document.getElementById("gameTimer")
     updateTimerOnce.textContent = originalTimeLeft
 
